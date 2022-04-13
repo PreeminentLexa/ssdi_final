@@ -6,10 +6,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx" hgap="5" vgap="5"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.finalproject.controllers.G_InputQuestionController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
 
-    <Button GridPane.rowIndex="0" GridPane.columnIndex="0" text="Utility.inputQuestion_pickQuestion" onAction="#testPickQuestion"></Button>
+<!--Coded By: Bridget-->
+
+<GridPane xmlns="http://javafx.com/javafx" hgap="5" vgap="5"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.finalproject.controllers.G_InputQuestionController"
+          prefHeight="400.0" prefWidth="600.0">
+    <!--I'll fix the positions of labels and buttons and whatnot later. Rn I'm focusing on just getting code down-->
+
+    <!--Question-->
+            <Label fx:id="Question" text="#Callback_getQuestion"
+                  GridPane.columnIndex="150" GridPane.rowIndex="100"
+                  GridPane.columnSpan="2"/>
+    <!--Next Button-->
+            <Button fx:id="NextButton" text="Next"
+                    prefWidth="100" prefHeight="40" defaultButton="true"
+                    GridPane.columnIndex="20" GridPane.rowIndex="20"
+                    GridPane.columnSpan="2" GridPane.rowSpan="1"
+
+                    onAction="#testPickQuestion">
+                <GridPane.margin>
+                    <Insets top="20" right="0" bottom="20" left="0"></Insets>
+                </GridPane.margin>
+            </Button>
+   <!-- <Button GridPane.rowIndex="20" GridPane.columnIndex="20" text="Utility.inputQuestion_pickQuestion" onAction="#testPickQuestion"></Button>-->
 </GridPane>
+
