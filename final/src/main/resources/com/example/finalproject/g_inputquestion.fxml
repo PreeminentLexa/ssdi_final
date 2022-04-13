@@ -15,17 +15,17 @@
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.example.finalproject.controllers.G_InputQuestionController"
           prefHeight="400.0" prefWidth="600.0">
-    <!--I'll fix the positions of labels and buttons and whatnot later. Rn I'm focusing on just getting code down-->
+    <!--Fix the positions so that they're in the right place. I'll fidgit more later w them (with the size and whatnot-->
 
     <!--Question-->
             <Label fx:id="Question" text="#Callback_getQuestion"
-                  GridPane.columnIndex="150" GridPane.rowIndex="100"
-                  GridPane.columnSpan="2"/>
+                  GridPane.columnIndex="300" GridPane.rowIndex="50"
+                  GridPane.columnSpan="30"/>
     <!--Next Button-->
             <Button fx:id="NextButton" text="Next"
                     prefWidth="100" prefHeight="40" defaultButton="true"
-                    GridPane.columnIndex="20" GridPane.rowIndex="20"
-                    GridPane.columnSpan="2" GridPane.rowSpan="1"
+                    GridPane.columnIndex="300" GridPane.rowIndex="90"
+                    GridPane.columnSpan="200" GridPane.rowSpan="1"
 
                     onAction="#testPickQuestion">
                 <GridPane.margin>
