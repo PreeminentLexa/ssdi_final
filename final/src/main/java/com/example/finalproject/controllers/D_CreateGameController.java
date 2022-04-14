@@ -29,7 +29,7 @@ public class D_CreateGameController extends UtilControllerBase {
     public void Callback_connectionLost(){}
     public void Callback_gameClosed(){}
 
-
+    @FXML
     public void nextButtonAction(ActionEvent event) throws IOException{
         String[] settings = new String[]{
                 "rounds|i|" + roundsField.getText(),
@@ -38,7 +38,7 @@ public class D_CreateGameController extends UtilControllerBase {
         String password = passwordField.getText();
         Utility.createGame_create(settings,password);
     }
-
+    @FXML
     public void prevButtonAction(ActionEvent event) throws IOException{
         Utility.createGame_back();
     }

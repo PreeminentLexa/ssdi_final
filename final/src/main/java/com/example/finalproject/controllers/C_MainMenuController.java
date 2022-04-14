@@ -4,6 +4,7 @@ package com.example.finalproject.controllers;
 
 import com.example.finalproject.Utility;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,14 +16,15 @@ public class C_MainMenuController extends UtilControllerBase {
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
 
-
+    @FXML
     public void newGameAction(){
         Utility.mainMenu_newGame();
     }
-
+    @FXML
     public void joinGameAction(){
         Utility.mainMenu_joinGame();
     }
+    @FXML
     public void disconnect(ActionEvent event){
         Utility.mainMenu_disconnect();
     }
