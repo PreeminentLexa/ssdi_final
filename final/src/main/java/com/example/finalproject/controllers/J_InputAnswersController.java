@@ -3,11 +3,23 @@ package com.example.finalproject.controllers;
 // The Controller for Frame J
 
 import com.example.finalproject.Utility;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class J_InputAnswersController extends UtilControllerBase {
+    public Label Question;
+    public TextField t1;
+    public TextField t2;
+    public TextField t3;
+    public Button Next;
+    public Button Prev;
+
+
+
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
     public void Callback_gameClosed(){}
