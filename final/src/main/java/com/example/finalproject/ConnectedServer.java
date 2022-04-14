@@ -146,7 +146,7 @@ public class ConnectedServer implements Runnable {
             }
         } catch (IOException e) {
             System.out.println("Problem reading from "+getID()+", "+e.getMessage());
-            Utility.FROMSERVER_serverConnectionLost();
+            Utility.Think.setConnectionClosedFlag(true);
         } finally {
             close();
         }

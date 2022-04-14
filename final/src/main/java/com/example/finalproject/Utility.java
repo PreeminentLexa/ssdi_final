@@ -150,14 +150,41 @@ public class Utility {
     }
     public static class Think {
         public static void checkFlags(){
+            if(Think.flag_SchedulePage){onSchedulePageFlag();}
             if(Think.flag_ConnectionClosed){onConnectionClosedFlag();}
             if(Think.flag_GameClosed){onGameClosedFlag();}
+            if(Think.flag_ConnectEnded){onConnectEndedFlag();}
             if(Think.flag_JoinedGame){onJoinedGameFlag();}
             if(Think.flag_JoinFailed){onJoinFailedFlag();}
             if(Think.flag_GameStarted){onGameStartedFlag();}
             if(Think.flag_QuestionerFinished){onQuestionerFinishedFlag();}
-            if(Think.flag_SchedulePage){onSchedulePageFlag();}
             if(Think.flag_DoneAnswering){onDoneAnsweringFlag();}
+        }
+
+        ///////////////////
+        // Schedule Page //
+        ///////////////////
+        public static boolean flag_SchedulePage = false;
+        public static String pickup_SchedulePage1 = null;
+        public static StackTraceElement pickup_SchedulePage2 = null;
+        public static Runnable pickup_SchedulePage3 = null;
+        public static void setSchedulePageFlag(boolean val){
+            flag_SchedulePage = val;
+        }
+        public static void setSchedulePageFlagPickups(String pickup1, StackTraceElement pickup2, Runnable pickup3){
+            pickup_SchedulePage1 = pickup1;
+            pickup_SchedulePage2 = pickup2;
+            pickup_SchedulePage3 = pickup3;
+        }
+        private static void onSchedulePageFlag(){
+            Utility.swapToPage(pickup_SchedulePage1, pickup_SchedulePage2);
+            if(null != pickup_SchedulePage3){
+                pickup_SchedulePage3.run();
+            }
+            flag_SchedulePage = false;
+            pickup_SchedulePage1 = null;
+            pickup_SchedulePage2 = null;
+            pickup_SchedulePage3 = null;
         }
 
         /////////////////////////////////
@@ -247,32 +274,6 @@ public class Utility {
             pickup_QuestionerFinished2 = null;
         }
 
-        ///////////////////
-        // Schedule Page //
-        ///////////////////
-        public static boolean flag_SchedulePage = false;
-        public static String pickup_SchedulePage1 = null;
-        public static StackTraceElement pickup_SchedulePage2 = null;
-        public static Runnable pickup_SchedulePage3 = null;
-        public static void setSchedulePageFlag(boolean val){
-            flag_SchedulePage = val;
-        }
-        public static void setSchedulePageFlagPickups(String pickup1, StackTraceElement pickup2, Runnable pickup3){
-            pickup_SchedulePage1 = pickup1;
-            pickup_SchedulePage2 = pickup2;
-            pickup_SchedulePage3 = pickup3;
-        }
-        private static void onSchedulePageFlag(){
-            Utility.swapToPage(pickup_SchedulePage1, pickup_SchedulePage2);
-            if(null != pickup_SchedulePage3){
-                pickup_SchedulePage3.run();
-            }
-            flag_SchedulePage = false;
-            pickup_SchedulePage1 = null;
-            pickup_SchedulePage2 = null;
-            pickup_SchedulePage3 = null;
-        }
-
         ////////////////////
         // Done Answering //
         ////////////////////
@@ -289,6 +290,33 @@ public class Utility {
             flag_DoneAnswering = false;
             pickup_DoneAnswering1 = null;
             pickup_DoneAnswering2 = null;
+        }
+
+        //////////////////////////
+        // Connect Attempt Done //
+        //////////////////////////
+        public static boolean flag_ConnectEnded = false;
+        public static boolean pickup_ConnectEnded1 = false;
+        public static String pickup_ConnectEnded2 = null;
+        public static int pickup_ConnectEnded3 = -1;
+        public static void setConnectEndedFlag(boolean val, boolean pickup1){
+            flag_ConnectEnded = val;
+            pickup_ConnectEnded1 = pickup1;
+        }
+        public static void setConnectEndedFlagPickups(String pickup2, int pickup3){
+            pickup_ConnectEnded2 = pickup2;
+            pickup_ConnectEnded3 = pickup3;
+        }
+        private static void onConnectEndedFlag(){
+            if(pickup_ConnectEnded1){
+                Utility.joinServer_success(pickup_ConnectEnded2, pickup_ConnectEnded3);
+            } else {
+                Utility.joinServer_failed();
+            }
+            flag_ConnectEnded = false;
+            pickup_ConnectEnded1 = false;
+            pickup_ConnectEnded2 = null;
+            pickup_ConnectEnded3 = -1;
         }
 
         //////////////////
@@ -319,9 +347,6 @@ public class Utility {
         }
         Utility.server.close();
     }
-    public static void FROMSERVER_serverConnectionLost(){
-        Think.setConnectionClosedFlag(true);
-    }
 
     /** gameClosed - From Server - The local user has been disconnected from the current game
      */
@@ -345,18 +370,8 @@ public class Utility {
      */
     public static void joinServer(String ip, String username, int imageNumber){
         Utility.swapToPage("util-pending.fxml");
-        // SWAP TO PAGE MUST REFRESH THE VIEW BEFORE WE CREATE A CONNECTION, OR IT'LL STALL BEFORE OPENING THE PENDING PAGE794613
+        Utility.Think.setConnectEndedFlagPickups(username, imageNumber);
         Utility.server = new Connection(ip);
-        // Mutex multi thread loop
-        if(Utility.server.isConnected()){
-            User.getLocalUser().setUsername(username);
-            User.getLocalUser().setImageIndex(imageNumber);
-            Utility.server.setUsername(username);
-            Utility.server.setImage(imageNumber);
-            Utility.joinServer_success();
-        } else {
-            Utility.joinServer_failed();
-        }
     }
 
     /** getUID - From Server - After a successful connection, the server tells us our unique ID
@@ -375,7 +390,11 @@ public class Utility {
 
     /** joinServer_success - From Utility.joinServer - Successful server connection
      */
-    public static void joinServer_success(){
+    public static void joinServer_success(String username, int imageNumber){
+        User.getLocalUser().setUsername(username);
+        User.getLocalUser().setImageIndex(imageNumber);
+        Utility.server.setUsername(username);
+        Utility.server.setImage(imageNumber);
         Utility.swapToPage("c_mainmenu.fxml");
     }
 
@@ -619,10 +638,13 @@ public class Utility {
         Utility.controller.Callback_getAnswers(a1, a2, a3, a4, -1);
     }
 
+    private static int myPick = -1;
     /** answering_pick - From Controller (I) - Picks an answer and tells the server about it
      * @param answer The number of the selected answer (1-4)
      */
     public static void answering_pick(int answer){
+        if(-1 != Utility.myPick){return;}
+        Utility.myPick = answer;
         long epoc = Instant.now().toEpochMilli();
         Utility.server.sendAnswer(answer, epoc);
         // WORK ON, send to server
@@ -641,6 +663,8 @@ public class Utility {
      * @param correct An int, the correct answer
      */
     public static void allAnsweredOrTimeDone(String q, String a1, String a2, String a3, String a4, int a1num, int a2num, int a3num, int a4num, int correct){
+        int myPick = Utility.myPick;
+        Utility.myPick = -1;
         // When this happens, if we're not on the final round, the server needs to set a timer for (Utility.timeOnCorrectAnswerPage+Utility.timeOnScoreboardPage) seconds, to start the next round
         Utility.swapToPage("l_correctanswerreveal.fxml");
         Utility.controller.Callback_getQuestion(q);
@@ -649,7 +673,7 @@ public class Utility {
         Utility.swapToPageAtTime("m_scoreboard.fxml", Instant.now().plusSeconds(Utility.timeOnCorrectAnswerPage));
         if(Utility.game.isFinalRound()){
             Utility.swapToPageAtTime("n_endgame.fxml", Instant.now().plusSeconds(Utility.timeOnCorrectAnswerPage+Utility.timeOnScoreboardPage));
-        }
+        } // restarting the next round is dealt with by the server
     }
 
     /** userScoreReceived - From Server - Updates the score of each user, this is done one at a time whilst the clients are looking at the 10 second correct answer reveal
