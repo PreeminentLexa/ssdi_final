@@ -5,10 +5,14 @@ package com.example.finalproject.controllers;
 import com.example.finalproject.GameSettings;
 import com.example.finalproject.User;
 import com.example.finalproject.Utility;
+import javafx.event.ActionEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * @author Azan
+ */
 public class E_AwaitingUsersController extends UtilControllerBase {
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
@@ -23,6 +27,19 @@ public class E_AwaitingUsersController extends UtilControllerBase {
         Utility.awaitingUsers_back();
     }
     public void testStartGame() {
+        Utility.awaitingUsers_startGame();
+    }
+
+
+    //Previous Button in the Bottom Left
+    public void prevButtonAction(ActionEvent event) throws IOException{
+        Utility.awaitingUsers_back();
+
+
+    }
+
+    //Start Button
+    private void startButtonAction(ActionEvent event) throws IOException{
         Utility.awaitingUsers_startGame();
     }
 

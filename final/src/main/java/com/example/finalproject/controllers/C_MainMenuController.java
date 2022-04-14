@@ -8,20 +8,13 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * @author Azan
+ */
 public class C_MainMenuController extends UtilControllerBase {
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
 
-//    public void testNewGame() {
-//        Utility.mainMenu_newGame();
-//    }
-//    public void testJoinGame() {
-//        Utility.mainMenu_joinGame();
-//    }
-//    public void testDisconnect() {
-//        Utility.mainMenu_disconnect();
-//    }
 
     public void newGameAction(ActionEvent event) throws IOException {
         Utility.mainMenu_newGame();

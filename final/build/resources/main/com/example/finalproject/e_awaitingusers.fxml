@@ -45,7 +45,7 @@
             <Text layoutX="180.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Host" />
          </children>
       </Pane>
-      <Button mnemonicParsing="false" text="&lt; Prev" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-      <Button mnemonicParsing="false" text="Next &gt;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+      <Button fx:id="prevButton" mnemonicParsing="false" onAction="#prevButtonAction" text="&lt; Prev" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+      <Button fx:id="startButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="127.0" text="Start" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

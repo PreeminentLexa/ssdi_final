@@ -3,24 +3,38 @@ package com.example.finalproject.controllers;
 // The Controller for frame D
 
 import com.example.finalproject.Utility;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * @author Azan
+ */
 public class D_CreateGameController extends UtilControllerBase {
+    private TextField roundsField;
+    private TextField roundTimeField;
+    private TextField passwordField;
+    private Button prevButton;
+    private Button nextButton;
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
     public void Callback_gameClosed(){}
 
-    public void testBack() {
-        Utility.createGame_back();
-    }
-    public void testCreate() {
+
+    public void nextButtonAction(ActionEvent event) throws IOException{
         String[] settings = new String[]{
-                "rounds|i|5",
-                "answertime|i|30",
+                "rounds|i|" + roundsField.getText(),
+                "answertime|i|" + roundTimeField.getText(),
         };
-        Utility.createGame_create(settings, "superPassword");
+        String password = passwordField.getText();
+        Utility.createGame_create(settings,password);
+    }
+
+    public void prevButtonAction(ActionEvent event) throws IOException{
+        Utility.createGame_back();
     }
 
     // Callable:

@@ -16,8 +16,9 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField prefHeight="32.0" prefWidth="300.0" scaleX="0.8" text="Username" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-      <TextField layoutX="10.0" layoutY="114.0" prefHeight="32.0" prefWidth="226.0" scaleX="0.8" text="IP" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Go!" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+      <TextField fx:id="usenameField" prefHeight="32.0" prefWidth="300.0" scaleX="0.8" text="Username" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+      <TextField fx:id="ipField" layoutX="10.0" layoutY="114.0" prefHeight="32.0" prefWidth="226.0" scaleX="0.8" text="IP" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Button mnemonicParsing="false" onAction="#goButtonAction" prefHeight="25.0" prefWidth="89.0" text="Go!" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+      <Label fx:id="label1" textFill="RED" GridPane.rowIndex="3" />
    </children>
 </GridPane>
