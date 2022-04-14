@@ -53,6 +53,9 @@ public class GameSettings {
         setSetting(settingCounts++, type, value);
     }
     public String getSSetting(String key){
+        return getSSetting(key, null);
+    }
+    public String getSSetting(String key, String def){
         for(int i = 0;i < settingCounts;i++){
             if(key.equals(keys[i])){
                 if(types[i].equals("s")){
@@ -60,9 +63,12 @@ public class GameSettings {
                 }
             }
         }
-        return null;
+        return def;
     }
     public int getiSetting(String key){
+        return getiSetting(key, -1);
+    }
+    public int getiSetting(String key, int def){
         for(int i = 0;i < settingCounts;i++){
             if(key.equals(keys[i])){
                 if(types[i].equals("i")){
@@ -70,9 +76,12 @@ public class GameSettings {
                 }
             }
         }
-        return -1;
+        return def;
     }
     public float getfSetting(String key){
+        return getfSetting(key, -1);
+    }
+    public float getfSetting(String key, float def){
         for(int i = 0;i < settingCounts;i++){
             if(key.equals(keys[i])){
                 if(types[i].equals("f")){
@@ -80,7 +89,7 @@ public class GameSettings {
                 }
             }
         }
-        return -1;
+        return def;
     }
     public String getSettingType(String key){
         for(int i = 0;i < settingCounts;i++){
@@ -91,6 +100,9 @@ public class GameSettings {
         return null;
     }
     public Object getUNKSetting(String key){
+        return getUNKSetting(key, null);
+    }
+        public Object getUNKSetting(String key, Object def){
         for(int i = 0;i < settingCounts;i++){
             if(key.equals(keys[i])){
                 switch(types[i]){
@@ -103,6 +115,24 @@ public class GameSettings {
                 }
             }
         }
-        return null;
+        return def;
+    }
+    public String[] getSettingStrings(){
+        String[] settingStrings = new String[settingCounts];
+        for(int i = 0;i < settingCounts;i++){
+            settingStrings[i] = keys[i]+"|"+types[i]+"|";
+            switch(types[i]){
+                case "s":
+                    settingStrings[i] += sValues[i];
+                    break;
+                case "i":
+                    settingStrings[i] += iValues[i];
+                    break;
+                case "f":
+                    settingStrings[i] += fValues[i];
+                    break;
+            }
+        }
+        return settingStrings;
     }
 }
