@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx" hgap="5" vgap="5"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.finalproject.controllers.UtilCountdownController"
+            fx:id="root"
+            prefHeight="400.0" prefWidth="600.0">
+
+
+    <Button GridPane.rowIndex="0" GridPane.columnIndex="0" text="Countdown Test" onAction="#testReturnToMainMenu"></Button>
+</GridPane>

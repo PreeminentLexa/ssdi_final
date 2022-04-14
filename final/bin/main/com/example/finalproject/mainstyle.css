@@ -1,0 +1,16 @@
+#root{
+    /*
+    -fx-background-image: url("");
+    */
+    /* This will be the main background later
+       The root panel of all FXML documents should have fx:id="root"
+    */
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('Ubuntu-Light.ttf');
+}
+.button {
+    /* -fx-font-family: "Ubuntu"; */
+    font-family: Helvetica;
+}

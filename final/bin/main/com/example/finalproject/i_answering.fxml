@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--Coded By: Bridget-->
+<GridPane xmlns="http://javafx.com/javafx" hgap="5" vgap="5"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.finalproject.controllers.I_AnsweringController"
+            prefHeight="400.0" prefWidth="600.0">
+    <!--Question-->
+    <Label GridPane.rowIndex="10" GridPane.columnIndex="45" fx:id="Question" text="#Callback_getQuestion"
+           GridPane.rowSpan="50"
+           GridPane.columnSpan="40"/>
+    <!--Buttons-->
+    <Button fx:id="Button1" text="#Callback_getAnswers"
+            prefWidth="100" prefHeight="40" defaultButton="true"
+            GridPane.columnIndex="35" GridPane.rowIndex="50"
+            GridPane.columnSpan="200" GridPane.rowSpan="1"
+
+            onAction="#testPick">
+
+    </Button>
+    <Button fx:id="Button2" text="#Callback_getAnswers"
+            prefWidth="100" prefHeight="40" defaultButton="true"
+            GridPane.columnIndex="75" GridPane.rowIndex="50"
+            GridPane.columnSpan="200" GridPane.rowSpan="1"
+
+            onAction="#testPick">
+
+    </Button>
+    <Button fx:id="Button3" text="#Callback_getAnswers"
+            prefWidth="100" prefHeight="40" defaultButton="true"
+            GridPane.columnIndex="35" GridPane.rowIndex="60"
+            GridPane.columnSpan="200" GridPane.rowSpan="1"
+
+            onAction="#testPick">
+
+    </Button>
+    <Button fx:id="Button4" text="#Callback_getAnswers"
+            prefWidth="100" prefHeight="40" defaultButton="true"
+            GridPane.columnIndex="75" GridPane.rowIndex="60"
+            GridPane.columnSpan="200" GridPane.rowSpan="1"
+
+            onAction="#testPick">
+
+    </Button>
+
+  <!--  <Button GridPane.rowIndex="0" GridPane.columnIndex="0" text="Utility.answering_pick" onAction="#testPick"></Button>-->
+</GridPane>

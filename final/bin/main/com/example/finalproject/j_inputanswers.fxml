@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx" hgap="5" vgap="5"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.finalproject.controllers.J_InputAnswersController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label GridPane.rowIndex="10" GridPane.columnIndex="45" fx:id="Question" text="#tmp"
+           GridPane.rowSpan="50"
+           GridPane.columnSpan="40"/>
+
+
+    <TextField GridPane.rowIndex="10" GridPane.columnIndex="45" fx:id="t1"
+           GridPane.rowSpan="50"
+           GridPane.columnSpan="40"/>
+    <TextField GridPane.rowIndex="10" GridPane.columnIndex="45" fx:id="t2"
+               GridPane.rowSpan="50"
+               GridPane.columnSpan="40"/>
+    <TextField GridPane.rowIndex="10" GridPane.columnIndex="45" fx:id="t3"
+               GridPane.rowSpan="50"
+               GridPane.columnSpan="40"/>
+    <TextField GridPane.rowIndex="10" GridPane.columnIndex="45" fx:id="t4"
+               GridPane.rowSpan="50"
+               GridPane.columnSpan="40"/>
+
+
+    <Button fx:id="Next" text="#Callback_getAnswers"
+            prefWidth="100" prefHeight="40" defaultButton="true"
+            GridPane.columnIndex="35" GridPane.rowIndex="50"
+            GridPane.columnSpan="200" GridPane.rowSpan="1"
+
+            onAction="#testPickAnswers"/>
+    <Button fx:id="Prev" text="#Callback_getAnswers"
+            prefWidth="100" prefHeight="40" defaultButton="true"
+            GridPane.columnIndex="35" GridPane.rowIndex="50"
+            GridPane.columnSpan="200" GridPane.rowSpan="1"
+
+            onAction="#testBack"/>
+
+    <!--
+    <Button GridPane.rowIndex="0" GridPane.columnIndex="0" text="Utility.inputAnswer_back" onAction="#testBack"/>
+    <Button GridPane.rowIndex="1" GridPane.columnIndex="0" text="Utility.inputAnswer_pickAnswers" onAction="#testPickAnswers"></Button>
+-->
+
+</GridPane>
