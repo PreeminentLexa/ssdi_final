@@ -38,10 +38,10 @@
             <Rectangle arcWidth="5.0" fill="#b8cadb00" height="26.0" layoutX="14.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
             <Rectangle arcWidth="5.0" fill="#b8cadb00" height="26.0" layoutX="14.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
             <Rectangle arcWidth="5.0" fill="#b8cadb00" height="26.0" layoutX="14.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-            <Label layoutX="38.0" layoutY="28.0" text="User" />
-            <Label layoutX="38.0" layoutY="66.0" text="User" />
-            <Label layoutX="38.0" layoutY="105.0" text="User" />
-            <Label layoutX="38.0" layoutY="146.0" text="User" />
+            <Label fx:id="user1" layoutX="38.0" layoutY="28.0" text="User" />
+            <Label fx:id="user2" layoutX="38.0" layoutY="66.0" text="User" />
+            <Label fx:id="user3" layoutX="38.0" layoutY="105.0" text="User" />
+            <Label fx:id="user4" layoutX="38.0" layoutY="146.0" text="User" />
             <Text layoutX="180.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Host" />
          </children>
       </Pane>
