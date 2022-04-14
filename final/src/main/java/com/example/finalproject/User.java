@@ -6,6 +6,7 @@ public class User {
     private int imageIndex;
     private int score;
     private boolean localUser;
+    private boolean host;
     public User(String uid, String username, int imageIndex){
         this.uid = uid;
         if(uid.equals("_")){
@@ -80,6 +81,14 @@ public class User {
         }
         return new User("_", "", -1);
     }
+    public static User getHostUser(){
+        for(int i = 0;i < userCount;i++){
+            if(allUsers[i].isHost()){
+                return allUsers[i];
+            }
+        }
+        return null;
+    }
     public static User[] getAllUsers(){
         User[] returnUsers = new User[userCount];
         for(int i = 0;i < userCount;i++){
@@ -101,4 +110,14 @@ public class User {
         }
         return null;
     }
+
+    public boolean isHost(){
+        return this.host;
+    }
+
+    public void setIsHost(boolean isHost) {
+        this.host = isHost;
+    }
+
+    // WORK ON images
 }
