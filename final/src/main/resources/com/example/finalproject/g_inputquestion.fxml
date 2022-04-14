@@ -8,13 +8,13 @@
 <!--Coded By: Bridget-->
 
 <GridPane hgap="5" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.G_InputQuestionController">
-    
+
 
     <!--Question-->
-            <Label fx:id="Question" graphicTextGap="6.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="100.0" text="Question" GridPane.columnIndex="45" GridPane.columnSpan="40" GridPane.rowIndex="20">
+            <TextField fx:id="Question"  minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="100.0" text="Question" GridPane.columnIndex="45" GridPane.columnSpan="40" GridPane.rowIndex="20">
       <font>
          <Font size="22.0" />
-      </font></Label>
+      </font></TextField>
     <!--Next Button-->
             <Button fx:id="NextButton" defaultButton="true" minHeight="-Infinity" minWidth="-Infinity" onAction="#testPickQuestion" prefHeight="40" prefWidth="100" text="Next" GridPane.columnIndex="45" GridPane.columnSpan="200" GridPane.rowIndex="40" GridPane.rowSpan="1">
                 <GridPane.margin>
