@@ -3,6 +3,8 @@ package com.example.finalproject.controllers;
 // The Controller for frame G
 
 import com.example.finalproject.Utility;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;

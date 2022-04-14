@@ -6,11 +6,18 @@
        The root panel of all FXML documents should have fx:id="root"
     */
 }
-@font-face {
-    font-family: 'Ubuntu';
-    src: url('Ubuntu-Light.ttf');
+
+
+.root {
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    -fx-font-family: Arial, Arial, Helvetica, sans-serif;
+
+    -fx-background-image: url("./assets/background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
 }
+
 .button {
-    /* -fx-font-family: "Ubuntu"; */
-    font-family: Helvetica;
+
 }

@@ -6,3 +6,18 @@
        The root panel of all FXML documents should have fx:id="root"
     */
 }
+
+
+.root {
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    -fx-font-family: Arial, Arial, Helvetica, sans-serif;
+
+    -fx-background-image: url("./assets/background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.button {
+
+}
