@@ -157,6 +157,7 @@ public class Utility {
             if(Think.flag_JoinedGame){onJoinedGameFlag();}
             if(Think.flag_JoinFailed){onJoinFailedFlag();}
             if(Think.flag_GameStarted){onGameStartedFlag();}
+            if(Think.flag_CodeArrived){onCodeArrivedFlag();}
             if(Think.flag_QuestionerFinished){onQuestionerFinishedFlag();}
             if(Think.flag_DoneAnswering){onDoneAnsweringFlag();}
         }
@@ -254,6 +255,21 @@ public class Utility {
             awaitingUsers_gameStarted(pickup_GameStarted1);
             flag_GameStarted = false;
             pickup_GameStarted1 = null;
+        }
+
+        //////////////////
+        // Code Arrived //
+        //////////////////
+        public static boolean flag_CodeArrived = false;
+        public static String pickup_CodeArrived1 = null;
+        public static void setCodeArrivedFlag(boolean val, String pickup1){
+            flag_CodeArrived = val;
+            pickup_CodeArrived1 = pickup1;
+        }
+        private static void onCodeArrivedFlag(){
+            Utility.awaitingUsers_receivedCode(pickup_CodeArrived1);
+            flag_CodeArrived = false;
+            pickup_CodeArrived1 = null;
         }
 
         /////////////////////////
