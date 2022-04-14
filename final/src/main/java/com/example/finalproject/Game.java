@@ -20,7 +20,7 @@ public class Game {
         this.round++;
     }
     public boolean isFinalRound(){
-        int rounds = getiSetting("rounds");
+        int rounds = getISetting("rounds");
         return rounds <= this.round;
     }
     public GameSettings getGameSettings(){
@@ -29,10 +29,10 @@ public class Game {
     public String getSSetting(String key){
         return this.gameSettings.getSSetting(key);
     }
-    public int getiSetting(String key){
+    public int getISetting(String key){
         return this.gameSettings.getiSetting(key);
     }
-    public float getfSetting(String key){
+    public float getFSetting(String key){
         return this.gameSettings.getfSetting(key);
     }
     public String getSettingType(String key){

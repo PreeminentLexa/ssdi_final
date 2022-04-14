@@ -8,11 +8,11 @@ import java.io.IOException;
 public class FinalProjectApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Utility.stage = stage;
-        Utility.swapToPage(Utility.initialScreen);
+        Utility.initialize(stage);
     }
 
     public static void main(String[] args) {
+        Utility.createThinkHook();
         launch();
     }
 }
