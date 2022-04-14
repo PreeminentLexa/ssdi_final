@@ -6,19 +6,45 @@ import com.example.finalproject.Utility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class A_ConnectScreenController extends UtilControllerBase {
+
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField ipField;
+    @FXML
+    private Button goButton;
+    String username;
+    String IP;
+
+    //Action for when the button in Scene A is pressed
+    public void goButtonAction(ActionEvent event){
+        try{
+            //Get Username from Textfield
+            username = usernameField.getText();
+            //Get ip from textfield
+            IP = ipField.getText();
+            //join server using inputs (Default Image is 1 for now)
+            Utility.joinServer(username, IP, 1);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+    }
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
 
     public void Callback_errorMessage(String message){} // for example, failed to connect
     public void Callback_previousConnectInputs(String ip, String username, int imageIndex){}
 
-    public void testJoinServer() {
-        Utility.joinServer("localhost:8081", "Lexa", 1);
-    }
+//    public void testJoinServer() {
+//        Utility.joinServer("localhost:8081", "Lexa", 1);
+//    }
 
     // Callable:
     // Utility.joinServer(String IP, String Username, int imageNumber);

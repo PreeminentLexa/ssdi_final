@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="243.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="357.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="240.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="360.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="295.0" minHeight="10.0" prefHeight="273.0" vgrow="SOMETIMES" />
@@ -17,20 +18,29 @@
       <Label text="New Game" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
       <Pane prefHeight="193.0" prefWidth="290.0" GridPane.columnIndex="1">
          <children>
-            <CubicCurve controlX1="-76.0" controlX2="30.0" controlY1="-95.0" controlY2="-8.0" endX="9.0" endY="99.0" fill="DODGERBLUE" layoutX="265.0" layoutY="149.0" startX="-96.0" startY="111.0" stroke="BLACK" />
-            <CubicCurve controlX1="-76.0" controlX2="30.0" controlY1="-95.0" controlY2="-8.0" endX="23.0" endY="111.0" fill="DODGERBLUE" layoutX="166.0" layoutY="149.0" startX="-89.0" startY="95.0" stroke="BLACK" />
-            <CubicCurve controlX1="-76.0" controlX2="30.0" controlY1="-95.0" controlY2="-8.0" endX="30.0" endY="124.0" fill="DODGERBLUE" layoutX="214.0" layoutY="149.0" startX="-96.0" startY="124.0" stroke="BLACK" />
-            <Circle fill="DODGERBLUE" layoutX="216.0" layoutY="112.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="DODGERBLUE" layoutX="142.0" layoutY="112.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="DODGERBLUE" layoutX="179.0" layoutY="112.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+            <Group fx:id="jgButton" layoutX="162.0" layoutY="89.0" onMouseClicked="#joinGameAction">
+               <children>
+                  <CubicCurve controlX1="-76.0" controlX2="30.0" controlY1="-95.0" controlY2="-8.0" endX="9.0" endY="99.0" fill="DODGERBLUE" layoutY="73.8577880859375" startX="-93.0" startY="99.0" stroke="BLACK" />
+                  <Circle fill="DODGERBLUE" layoutX="-41.0" layoutY="38.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                  <CubicCurve controlX1="-76.0" controlX2="30.0" controlY1="-95.0" controlY2="-8.0" endX="20.0" endY="95.0" fill="DODGERBLUE" layoutX="107.00878143310547" layoutY="77.80056762695312" startX="-89.0" startY="95.0" stroke="BLACK" />
+                  <Circle fill="DODGERBLUE" layoutX="73.0" layoutY="48.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+                  <CubicCurve controlX1="-76.0" controlX2="30.0" controlY1="-95.0" controlY2="-8.0" endX="30.0" endY="124.0" fill="DODGERBLUE" layoutX="48.99834442138672" layoutY="58.411529541015625" startX="-96.0" startY="124.0" stroke="BLACK" />
+                  <Circle fill="DODGERBLUE" layoutX="16.0" layoutY="30.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </Group>
          </children>
       </Pane>
       <Label alignment="TOP_CENTER" text="Join Game" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="21.0" layoutX="39.0" layoutY="179.0" rotate="-90.0" stroke="BLACK" strokeType="INSIDE" width="165.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="21.0" layoutX="41.0" layoutY="179.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
+            <Group fx:id="ngButton" layoutX="39.0" layoutY="167.0" onMouseClicked="#newGameAction">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="21.0" stroke="BLACK" strokeType="INSIDE" width="165.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="21.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
+               </children>
+            </Group>
          </children>
       </Pane>
+      <Button fx:id="disconnectButton" mnemonicParsing="false" text="Disconnect " GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>
