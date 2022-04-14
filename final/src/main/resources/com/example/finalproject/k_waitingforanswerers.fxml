@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx" hgap="5" vgap="5"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.finalproject.controllers.K_WaitingForAnswerersController"
-            prefHeight="400.0" prefWidth="600.0">
+<GridPane hgap="5" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.K_WaitingForAnswerersController">
+    <!--Question-->
+    <Label fx:id="Question" text="#Callback_getQuestion" GridPane.columnIndex="17" GridPane.columnSpan="40" GridPane.rowIndex="10" GridPane.rowSpan="50" />
+    <!--Buttons-->
+    <Button fx:id="Button1" defaultButton="true" prefHeight="40" prefWidth="100" text="#Callback_getAnswers" GridPane.columnIndex="5" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1">
+
+    </Button>
+    <Button fx:id="Button2" defaultButton="true" prefHeight="40" prefWidth="100" text="#Callback_getAnswers" GridPane.columnIndex="30" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1">
+
+    </Button>
+    <Button fx:id="Button3" defaultButton="true" prefHeight="40" prefWidth="100" text="#Callback_getAnswers" GridPane.columnIndex="5" GridPane.columnSpan="200" GridPane.rowIndex="60" GridPane.rowSpan="1">
+
+    </Button>
+    <Button fx:id="Button4" defaultButton="true" prefHeight="40" prefWidth="100" text="#Callback_getAnswers" GridPane.columnIndex="30" GridPane.columnSpan="200" GridPane.rowIndex="60" GridPane.rowSpan="1">
+
+    </Button>
+    <!--Labels-->
+    <Label fx:id="L1" text="#Callback_someoneAnswered" GridPane.columnIndex="3" GridPane.columnSpan="20" GridPane.rowIndex="20" GridPane.rowSpan="50" />
+    <Label fx:id="L2" text="#Callback_someoneAnswered" GridPane.columnIndex="28" GridPane.columnSpan="20" GridPane.rowIndex="20" GridPane.rowSpan="50" />
+    <Label fx:id="L3" text="#Callback_someoneAnswered" GridPane.columnIndex="3" GridPane.columnSpan="20" GridPane.rowIndex="35" GridPane.rowSpan="50" />
+    <Label fx:id="L4" text="#Callback_someoneAnswered" GridPane.columnIndex="28" GridPane.columnSpan="20" GridPane.rowIndex="35" GridPane.rowSpan="50" />
+
+
 
 </GridPane>
