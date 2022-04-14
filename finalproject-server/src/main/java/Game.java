@@ -24,7 +24,7 @@ public class Game {
     private boolean codeIsSet = false;
     private static final String hasherAlgorithm = "SHA-256"; // This is just a random hash, it has no significance.
 //    private static final String validCodeCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    private static final String validCodeCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // might take out I, 0, and O, to avoid confusion
+    private static final String validCodeCharacters = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // Taken out I, L, 1, 0, and O, to avoid confusion
     private static final int codeLength = 4;
 
 
@@ -112,6 +112,8 @@ public class Game {
 
     public void setHost(ConnectedClient host){
         if(!isGameOpen()){return;}
+        consoleLog(host, "joined as the host");
+        host.resetPoints();
         this.host = host;
         host.setGame(this);
         host.sendGameCode(this.getCode());
@@ -120,6 +122,8 @@ public class Game {
 
     public void addUser(ConnectedClient player){
         if(!isGameOpen()){return;}
+        consoleLog(player, "joined as a player");
+        player.resetPoints();
         players[(connectedPlayers++)-1] = player;
         player.setGame(this);
         player.sendJoinGameSuccess(this);
@@ -143,6 +147,7 @@ public class Game {
     }
 
     public void disconnectUser(ConnectedClient player){
+        consoleLog(player, "left");
         if(player == host){
             if(isGameEnded()){
                 host = null;
@@ -152,12 +157,12 @@ public class Game {
                 return;
             }
         }
-        for(int i = 0;i < connectedPlayers;i++){
+        for(int i = 0;i < connectedPlayers-1;i++){
             if(players[i].getUniqueID().equals(player.getUniqueID())){
-                for(int j = i;j < connectedPlayers-1;j++){
+                for(int j = i;j < connectedPlayers-2;j++){
                     players[j] = players[j+1];
                 }
-                players[connectedPlayers--] = null;
+                players[--connectedPlayers] = null;
             }
         }
         informPlayerLeave(player);
@@ -182,14 +187,6 @@ public class Game {
     public static final int GAMESTAGE_ANSWERSBEINGREVEALED = 4;
     public static final int GAMESTAGE_FINISHED = 5;
     private int gameStage = GAMESTAGE_AWAITINGUSERS;
-    public int getGameStage(){
-        return this.gameStage;
-    }
-    public void setGameStage(int gameStage){
-        this.gameStage = gameStage;
-
-        // If the game is done, call endTheGame() to allow the host to leave without booting
-    }
 
     public void requestGameStart(ConnectedClient client){
         if(client != host){return;}
@@ -202,13 +199,24 @@ public class Game {
         gameStage_startAnswering();
     }
 
+    public void consoleLog(ConnectedClient client, String message) {
+        consoleLog(client.getID()+" "+message);
+    }
+    public void consoleLog(String message){
+        System.out.println("["+(codeIsSet?code:"????")+"] "+message);
+    }
+
     public void doAnswer(ConnectedClient client, int answered, long epoc){
-        if(gameStage != GAMESTAGE_ANSWERERSANSWERING){return;}
-        if(!usableQnA){return;}
-        if(client == questioner){return;}
+        if(!verifyCanUserAnswer(client)){return;}
+
+        consoleLog(client,"answered ("+answered+") "+(qna[answered]));
         if(correct == answered){
-            long delta = (this.startTime*1000) - epoc;
-            System.out.println(client.getID()+" answered correctly in "+delta+"ms / "+(answerTime()*1000)+"ms");
+            long delta = epoc-(this.startTime*1000);
+            System.out.println("\tcorrect in "+delta+"ms / "+(answerTime()*1000)+"ms");
+            setAnswerSpeed(client, delta);
+            int points = calcPoint(delta, answerTime()*1000);
+            consoleLog(client, "was given "+points+" points for speed");
+            client.addPoints(points);
             // give client points
             // tell all players about client's new points
         }
@@ -259,8 +267,9 @@ public class Game {
             }
         }
         int index = questionerMap[currentQuestioner];
-        ConnectedClient questioner = index==connectedPlayers?host:players[index];
+        ConnectedClient questioner = index==(connectedPlayers-1)?host:players[index];
         currentQuestioner = (currentQuestioner+1)%connectedPlayers;
+        consoleLog(questioner, "is selected as questioner this round");
         return questioner;
     }
 
@@ -319,7 +328,9 @@ public class Game {
             internalGameStage_startRound();
             return;
         }
+        awardSpeedRankings();
         alertDoneRound();
+        alertPoints();
         Game game = this;
         if(null != timer){
             timer.cancel(true);
@@ -359,13 +370,31 @@ public class Game {
     private int pplDone = -1;
     private long startTime = -1;
     private int[] answerCounts = null;
+    private String[] answeredUsers = null;
+    private int answeredUsersIndex = -1;
+    private long[] answerSpeeds = null;
     private String[] qna = null;
     public void setQandA(String q, String a1, String a2, String a3, String a4, int correct){
         this.usableQnA = true;
         this.correct = correct;
         this.pplDone = 0;
         this.answerCounts = new int[]{0, 0, 0, 0};
+        this.answeredUsers = new String[connectedPlayers-1];
+        this.answeredUsersIndex = 0;
+        this.answerSpeeds = new long[connectedPlayers-1];
+        for(int i = 0;i < connectedPlayers-1;i++){
+            this.answerSpeeds[i] = -1;
+        }
         this.qna = new String[]{q,a1,a2,a3,a4};
+        consoleLog(questioner,"asked "+q);
+        for(int i = 1;i < qna.length;i++){
+            if(correct == i){
+                System.out.print("\t+ ");
+            } else {
+                System.out.print("\t- ");
+            }
+            System.out.println(qna[i]);
+        }
     }
     public void voidQandA(){
         this.usableQnA = false;
@@ -373,7 +402,122 @@ public class Game {
         this.pplDone = -1;
         this.startTime = -1;
         this.answerCounts = null;
+        this.answeredUsers = null;
+        this.answeredUsersIndex = -1;
+        this.answerSpeeds = null;
         this.qna = null;
+    }
+    public boolean verifyCanUserAnswer(ConnectedClient client){
+        if(gameStage != GAMESTAGE_ANSWERERSANSWERING){return false;}
+        if(!usableQnA){return false;}
+        if(null == client){return false;}
+        if(client == questioner){return false;}
+        for(int i = 0;i < answeredUsersIndex;i++){
+            if(answeredUsers[i].equals(client.getUniqueID())){
+                return false;
+            }
+        }
+        this.answeredUsers[answeredUsersIndex++] = client.getUniqueID();
+        return true;
+    }
+    public void setAnswerSpeed(ConnectedClient client, long speed){
+        for(int i = 0;i < answeredUsersIndex;i++){
+            if(answeredUsers[i].equals(client.getUniqueID())){
+                this.answerSpeeds[i] = speed;
+                return;
+            }
+        }
+    }
+    private int calcPoint(long delta, long max){
+        return Math.max(0,(int)(100-(100*delta/max)));
+    }
+    private static int[] pointsPerRank = new int[]{
+            50,
+            30,
+            10
+    };
+    private String formatNumberGrammar(int num){
+        switch(num%10){
+            case 1:
+                return num+"st";
+            case 2:
+                return num+"nd";
+            case 3:
+                return num+"rd";
+            default:
+                return num+"th";
+        }
+    }
+    public void awardSpeedRankings(){
+        ConnectedClient[] ranks = getSpeedRankings();
+        for(int i = 0;i < ranks.length;i++){
+            if(null != ranks[i]){
+                int points = 0;
+                if(i < pointsPerRank.length){
+                    points = pointsPerRank[i];
+                }
+                ranks[i].addPoints(points);
+                consoleLog(ranks[i], "was given "+points+" points for being the "+formatNumberGrammar(i+1)+" answer");
+            }
+        }
+    }
+    public ConnectedClient[] getSpeedRankings(){
+        String first = null;
+        long firstSpeed = -1;
+        String second = null;
+        long secondSpeed = -1;
+        String third = null;
+        long thirdSpeed = -1;
+        for(int i = 0;i < answerSpeeds.length;i++){
+            if(-1 == firstSpeed){
+                first = answeredUsers[i];
+                firstSpeed = answerSpeeds[i];
+            } else if(firstSpeed > answerSpeeds[i]){
+                first = answeredUsers[i];
+                firstSpeed = answerSpeeds[i];
+                second = first;
+                secondSpeed = firstSpeed;
+                third = second;
+                thirdSpeed = secondSpeed;
+            } else if(-1 != secondSpeed && secondSpeed > answerSpeeds[i]){
+                second = answeredUsers[i];
+                secondSpeed = answerSpeeds[i];
+                third = second;
+                thirdSpeed = secondSpeed;
+            } else if(-1 != thirdSpeed && thirdSpeed > answerSpeeds[i]){
+                third = answeredUsers[i];
+                thirdSpeed = answerSpeeds[i];
+            }
+        }
+        ConnectedClient[] ranks = new ConnectedClient[3];
+        if(null == first){return ranks;}
+        if(host.getUniqueID().equals(first)){
+            ranks[0] = host;
+        }
+        for(int i = 0;i < connectedPlayers-1;i++){
+            if(players[i].getUniqueID().equals(first)){
+                ranks[0] = players[i];
+            }
+        }
+        if(null == second){return ranks;}
+        if(host.getUniqueID().equals(second)){
+            ranks[1] = host;
+        }
+        for(int i = 0;i < connectedPlayers-1;i++){
+            if(players[i].getUniqueID().equals(second)){
+                ranks[1] = players[i];
+            }
+        }
+        if(null == third){return ranks;}
+        if(host.getUniqueID().equals(third)){
+            ranks[2] = host;
+        }
+        for(int i = 0;i < connectedPlayers-1;i++){
+            if(players[i].getUniqueID().equals(third)){
+                ranks[2] = players[i];
+            }
+        }
+        return ranks;
     }
 
 
@@ -419,6 +563,21 @@ public class Game {
         );
         voidQandA();
     }
+    private String scoreBit(ConnectedClient client){
+        return ClientCallbacks.CODE_PUSH+client.getPoints()+"\r\n"+
+                ClientCallbacks.CODE_POP+"1"+
+                ClientCallbacks.CODE_PLAYERSCORES+client.getUniqueID()+"\r\n";
+    }
+    public void alertPoints(){
+        String message = "";
+        if(null == host){
+            message += scoreBit(host);
+        }
+        for(int i = 0;i < connectedPlayers-1;i++){
+            message += scoreBit(players[i]);
+        }
+        messageAllPlayers(message);
+    }
 
     public void informPlayerJoin(ConnectedClient player){
         messageAllPlayersExcept(player,
@@ -452,7 +611,7 @@ public class Game {
     }
 
     public void messageAllPlayersExcept(ConnectedClient ignore, String message){
-        if(ignore != host){
+        if(ignore != host && null != host){
             host.sendMessage(message);
         }
         for(int i = 0;i < connectedPlayers-1;i++){
@@ -463,13 +622,17 @@ public class Game {
     }
 
     public void messageAllPlayers(String message){
-        host.sendMessage(message);
+        if(null != host){
+            host.sendMessage(message);
+        }
         for(int i = 0;i < connectedPlayers-1;i++){
             players[i].sendMessage(message);
         }
     }
     public void messageHost(String message){
-        host.sendMessage(message);
+        if(null != host){
+            host.sendMessage(message);
+        }
     }
     public void messageNonHosts(String message){
         for(int i = 0;i < connectedPlayers-1;i++){
@@ -477,7 +640,7 @@ public class Game {
         }
     }
     public void messageQuestioner(String message){
-        if(questioner == host){
+        if(questioner == host && null != host){
             host.sendMessage(message);
             return;
         }
@@ -490,7 +653,7 @@ public class Game {
         // no questioner found
     }
     public void messageNonQuestioner(String message){
-        if(questioner != host){
+        if(questioner != host && null != host){
             host.sendMessage(message);
         }
         for(int i = 0;i < connectedPlayers-1;i++){

@@ -162,6 +162,17 @@ public class ConnectedClient implements Runnable {
         );
     }
 
+    private int points = 0;
+    public void addPoints(int points){
+        this.points += points;
+    }
+    public void resetPoints(){
+        this.points = 0;
+    }
+    public int getPoints(){
+        return this.points;
+    }
+
     /** sendMessage - Sends a message to this client
      * @param message A String, the message
      */
@@ -279,6 +290,9 @@ public class ConnectedClient implements Runnable {
 
     public void close(){
         System.out.println("Closing connection with "+getID());
+        if(null != this.game){
+            this.game.disconnectUser(this);
+        }
         if(null != this.in){
             try {
                 this.in.close();

@@ -35,9 +35,11 @@ public class Utility {
                 }
                 toRemove.remove();
                 gameCount--;
+                System.out.println("Game closed, Code: "+code);
                 return;
             }
         }
+        System.out.println("Failed to close "+code);
     }
     public static void deleteGame(Game game){
         deleteGame(game.getCode());
