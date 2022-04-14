@@ -16,14 +16,14 @@ public class C_MainMenuController extends UtilControllerBase {
     public void Callback_connectionLost(){}
 
 
-    public void newGameAction(ActionEvent event) throws IOException {
+    public void newGameAction(){
         Utility.mainMenu_newGame();
     }
 
-    public void joinGameAction(ActionEvent event) throws IOException{
+    public void joinGameAction(){
         Utility.mainMenu_joinGame();
     }
-    public void disconnect(ActionEvent event) throws IOException{
+    public void disconnect(ActionEvent event){
         Utility.mainMenu_disconnect();
     }
 

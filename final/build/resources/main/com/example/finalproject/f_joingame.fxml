@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
@@ -15,11 +17,17 @@
    <children>
       <Pane prefHeight="258.0" prefWidth="522.0" GridPane.columnIndex="1">
          <children>
-            <TextField alignment="CENTER" layoutX="181.0" layoutY="201.0" prefHeight="36.0" prefWidth="239.0" text="Password" />
-            <TextField alignment="CENTER" layoutX="181.0" layoutY="154.0" prefHeight="36.0" prefWidth="239.0" text="Code" />
+            <TextField fx:id="passwordField" alignment="CENTER" layoutX="181.0" layoutY="201.0" prefHeight="36.0" prefWidth="239.0" text="Password" />
+            <TextField fx:id="codeField" alignment="CENTER" layoutX="181.0" layoutY="154.0" prefHeight="36.0" prefWidth="239.0" text="Code" />
          </children>
       </Pane>
-      <Button mnemonicParsing="false" text="&lt; Prev" GridPane.columnSpan="2" GridPane.rowSpan="2" GridPane.valignment="BOTTOM" />
-      <Button mnemonicParsing="false" text="Next &gt;" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowSpan="2" GridPane.valignment="BOTTOM" />
+      <Button fx:id="prevButton" mnemonicParsing="false" onAction="#prevButtonAction" text="&lt; Prev" GridPane.columnSpan="2" GridPane.rowSpan="2" GridPane.valignment="BOTTOM" />
+      <Button fx:id="joinButton" mnemonicParsing="false" onAction="#joinButtonAction" prefHeight="54.0" prefWidth="140.0" text="JOIN" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets top="150.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="27.0" />
+         </font></Button>
    </children>
 </GridPane>

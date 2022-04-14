@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.D_CreateGameController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,7 +21,7 @@
                <font>
                   <Font size="27.0" />
                </font></Label>
-            <TextField fx:id="roundsField" layoutX="14.0" layoutY="78.0" prefHeight="39.0" prefWidth="35.0" text="#">
+            <TextField fx:id="roundsField" layoutX="14.0" layoutY="78.0" prefHeight="39.0" prefWidth="35.0" promptText="#" text="5">
                <font>
                   <Font size="17.0" />
                </font></TextField>
@@ -34,7 +34,7 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <TextField fx:id="roundTimeField" layoutX="7.0" layoutY="48.0" prefHeight="19.0" prefWidth="66.0" text="20">
+            <TextField fx:id="roundTimeField" layoutX="7.0" layoutY="48.0" prefHeight="19.0" prefWidth="66.0" promptText="#" text="20">
                <font>
                   <Font size="17.0" />
                </font>
@@ -47,7 +47,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <TextField fx:id="passwordField" layoutX="8.0" layoutY="14.0" prefHeight="25.0" prefWidth="221.0" text="Password" />
+            <TextField fx:id="passwordField" layoutX="8.0" layoutY="14.0" prefHeight="25.0" prefWidth="221.0" promptText="Password" />
          </children>
       </Pane>
       <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next &gt;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />

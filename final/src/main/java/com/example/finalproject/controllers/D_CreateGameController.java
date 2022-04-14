@@ -4,6 +4,7 @@ package com.example.finalproject.controllers;
 
 import com.example.finalproject.Utility;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -14,10 +15,15 @@ import java.util.ResourceBundle;
  * @author Azan
  */
 public class D_CreateGameController extends UtilControllerBase {
+    @FXML
     private TextField roundsField;
+    @FXML
     private TextField roundTimeField;
+    @FXML
     private TextField passwordField;
+    @FXML
     private Button prevButton;
+    @FXML
     private Button nextButton;
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}

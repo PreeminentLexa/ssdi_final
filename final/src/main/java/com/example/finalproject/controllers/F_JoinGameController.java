@@ -4,6 +4,7 @@ package com.example.finalproject.controllers;
 
 import com.example.finalproject.Utility;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.controlsfx.control.action.Action;
@@ -15,7 +16,9 @@ import java.util.ResourceBundle;
  * @author Azan
  */
 public class F_JoinGameController extends UtilControllerBase {
+    @FXML
     private TextField codeField;
+    @FXML
     private TextField passwordField;
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
