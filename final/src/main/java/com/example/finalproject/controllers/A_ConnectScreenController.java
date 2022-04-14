@@ -29,6 +29,7 @@ public class A_ConnectScreenController extends UtilControllerBase {
     String IP;
 
     //Action for when the button in Scene A is pressed
+    @FXML
     public void goButtonAction(ActionEvent event){
         try{
             //Get Username from Textfield
@@ -48,7 +49,7 @@ public class A_ConnectScreenController extends UtilControllerBase {
     public void Callback_errorMessage(String message){
         label1.setText(message);
     } // for example, failed to connect
-    public void Callback_previousConnectInputs(String ip, String username, int imageIndex){}
+    public void Callback_previousConnectInputs(String ipAdd, String username, int imageIndex){Utility.joinServer(ipAdd, username, 1);}
 
 //    public void testJoinServer() {
 //        Utility.joinServer("localhost:8081", "Lexa", 1);

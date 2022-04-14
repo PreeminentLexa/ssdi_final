@@ -32,11 +32,11 @@ public class F_JoinGameController extends UtilControllerBase {
     public void testJoin() {
         Utility.joinGame_join("AAAA", "superPassword");
     }
-
+    @FXML
     public void prevButtonAction(ActionEvent event) throws IOException{
         Utility.joinGame_back();
     }
-
+    @FXML
     public void joinButtonAction(ActionEvent event) throws IOException{
         Utility.joinGame_join(codeField.getText(),passwordField.getText());
     }

@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <!--Coded By: Bridget-->
 
-<GridPane xmlns="http://javafx.com/javafx" hgap="5" vgap="5"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.finalproject.controllers.H_WaitingForQuestionerController"
-            prefHeight="400.0" prefWidth="600.0">
+<GridPane hgap="5" prefHeight="400.0" prefWidth="600.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.H_WaitingForQuestionerController">
     <!--Text-->
-  
-    <Label GridPane.rowIndex="10" GridPane.columnIndex="45" fx:id="Starting" text="#Callback_waitingForQuestioner"
-           GridPane.rowSpan="50"
-           GridPane.columnSpan="40"/>
-    <Label GridPane.rowIndex="60" GridPane.columnIndex="45" fx:id="Waiting" text="#Callback_waitingForQuestioner"
-           GridPane.rowSpan="10"
-           GridPane.columnSpan="40"/>
+
+    <Label fx:id="Starting" text="Starting. User is the questionner" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="35" GridPane.columnSpan="20" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+      <font>
+         <Font size="52.0" />
+      </font></Label>
+    <Label fx:id="Waiting" text="Please wait for a question" GridPane.columnIndex="45" GridPane.columnSpan="40" GridPane.rowIndex="69" GridPane.rowSpan="10" />
+
 
 
 </GridPane>

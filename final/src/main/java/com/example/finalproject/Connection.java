@@ -53,11 +53,13 @@ public class Connection {
         System.out.println("Connecting to "+this.IP+":"+this.port);
         Connection con_this = this;
         Runtime.getRuntime().addShutdownHook(new Thread(() -> con_this.close())); // cleanup connection if the application shuts down
-        connect(1);
-        if(isConnected()){
-            this.server = new ConnectedServer(this.socket);
-            new Thread(this.server).start();
-        }
+        new Thread(() -> {
+            con_this.connect(1);
+            if(con_this.isConnected()){
+                con_this.server = new ConnectedServer(con_this.socket);
+                new Thread(con_this.server).start();
+            }
+        }).start();
     }
 
     /** connect - This is an internal method, and shouldn't be touched, this is the looping portion of a connection attempt
@@ -69,6 +71,7 @@ public class Connection {
             this.out = new PrintWriter(this.socket.getOutputStream());
             this.shouldClose = true;
             System.out.println("Connection successful!");
+            Utility.Think.setConnectEndedFlag(true, true);
         } catch (IOException e) {
             if(this.retryCount > count){
                 System.out.println("Failed to connect, retrying in "+this.retryDelay+" seconds...");
@@ -80,6 +83,7 @@ public class Connection {
                 }
             } else {
                 System.out.println("Failed to connect to "+this.IP+":"+this.port);
+                Utility.Think.setConnectEndedFlag(true, false);
             }
         }
     }
