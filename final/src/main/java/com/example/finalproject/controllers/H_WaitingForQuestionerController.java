@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-//Coded by: Bridget 
+//Coded by: Bridget
 public class H_WaitingForQuestionerController extends UtilControllerBase {
     public Label Starting;
     public Label waiting;
@@ -17,6 +17,5 @@ public class H_WaitingForQuestionerController extends UtilControllerBase {
 
     public void Callback_waitingForQuestioner(User user){
         Starting.setText("Starting.\n"+user.getUsername()+"is the questionner");
-        waiting.setText("Please wait for a question");
     } // The user object of the questioner
 }
