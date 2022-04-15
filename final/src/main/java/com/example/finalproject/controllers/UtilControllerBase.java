@@ -2,6 +2,8 @@ package com.example.finalproject.controllers;
 
 import com.example.finalproject.GameSettings;
 import com.example.finalproject.User;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -28,4 +30,8 @@ public class UtilControllerBase implements Initializable {
     public void Callback_getAnswerCount(int a1count, int a2count, int a3count, int a4Count){} // L
 
     public void Util_CountDownTimeLeft(long millisecondsLeft, Instant targetTime){} // Util Countdown
+
+    public void exitApplication() {
+        Platform.exit();
+    }
 }

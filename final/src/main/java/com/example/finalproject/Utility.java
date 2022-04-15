@@ -49,16 +49,13 @@ public class Utility {
         swapToPage(resource, null);
     }
     private static void swapToPage(String resource, StackTraceElement ste){
-        System.out.print("Swapping to "+resource);
-
-
         if(null == ste){
             ste = Thread.currentThread().getStackTrace()[3];
         }
         System.out.println(
-                " from "+
-                        ste.getClassName()+"."+ste.getMethodName()+
-                        "("+ste.getFileName()+":"+ste.getLineNumber()+")"
+                "Swapping to "+resource+" from "+
+                ste.getClassName()+"."+ste.getMethodName()+
+                "("+ste.getFileName()+":"+ste.getLineNumber()+")"
         );
 
         if(null == Utility.stage){
@@ -81,7 +78,6 @@ public class Utility {
             Utility.controller = fxmlLoader.getController();
         } catch(IOException e){
             System.err.println("Unable to switch to "+resource);
-//            System.err.println(e);
             e.printStackTrace();
         }
     }
@@ -118,7 +114,6 @@ public class Utility {
      */
     public static void swapToPageAtTime(String resource, Instant time, boolean doCountPage, Runnable callback){
         long wait = Duration.between(Instant.now(), time).toMillis();
-//        System.out.println("Waiting for "+wait+"ms");
         StackTraceElement ste = Thread.currentThread().getStackTrace()[2];
         if(doCountPage){
             Utility.swapToPage("util-countdown.fxml", ste);
@@ -204,12 +199,14 @@ public class Utility {
         private static void onSchedulePageFlag(){
             flag_SchedulePage = false;
             Utility.swapToPage(pickup_SchedulePage1, pickup_SchedulePage2);
+            pickup_SchedulePage1 = null;
+            pickup_SchedulePage2 = null;
             if(null != pickup_SchedulePage3){
                 pickup_SchedulePage3.run();
             }
-            pickup_SchedulePage1 = null;
-            pickup_SchedulePage2 = null;
-            pickup_SchedulePage3 = null;
+            if(null == pickup_SchedulePage1){
+                pickup_SchedulePage3 = null;
+            }
         }
 
         /////////////////////////////////
@@ -418,16 +415,6 @@ public class Utility {
                 parent.setNext(thing);
                 return parent;
             }
-            public int length(){
-                return length(0);
-            }
-            public int length(int offset){
-                offset++;
-                if(null == next){
-                    return offset;
-                }
-                return this.next.length(offset);
-            }
         }
         private static boolean flag_UserJoined = false;
         private static UserJoinedQueue pickup_UserJoined1 = null;
@@ -573,7 +560,7 @@ public class Utility {
         User oldUserObj = User.getLocalUser();
         String ip = Utility.server.getAddress();
         Utility.serverConnectionLost();
-        Utility.controller.Callback_previousConnectInputs(ip, oldUserObj.getUsername(), oldUserObj.getImageIndex());
+        Utility.controller.Callback_previousConnectInputs(ip, oldUserObj.getUsername(), oldUserObj.getImageIndex()); // This doesn't work. No clue why not, it might need a delay
     }
 
     /** createGame_back - From Controller (D) - Returns to frame C (the main menu)
@@ -707,9 +694,6 @@ public class Utility {
             Utility.swapToPage("g_inputquestion.fxml");
         } else {
             Utility.swapToPage("h_waitingforquestioner.fxml");
-            for(User user : User.getAllUsers()){
-                System.out.println(user.getUsername() + " " + user.getUID());
-            }
             Utility.controller.Callback_waitingForQuestioner(User.getUser(uid));
         }
     }
@@ -797,7 +781,6 @@ public class Utility {
      * @param a4 A String, the fourth answer
      */
     public static void answering(String q, String a1, String a2, String a3, String a4){
-        System.out.println("answering callback");
         Utility.controller.Callback_getQuestion(q);
         Utility.controller.Callback_getAnswers(a1, a2, a3, a4, -1);
     }
@@ -834,10 +817,14 @@ public class Utility {
         Utility.controller.Callback_getQuestion(q);
         Utility.controller.Callback_getAnswers(a1, a2, a3, a4, correct);
         Utility.controller.Callback_getAnswerCount(a1num, a2num, a3num, a4num);
-        Utility.swapToPageAtTime("m_scoreboard.fxml", Instant.now().plusSeconds(Utility.timeOnCorrectAnswerPage));
+        Runnable endgameCallback = null;
         if(Utility.game.isFinalRound()){
-            Utility.swapToPageAtTime("n_endgame.fxml", Instant.now().plusSeconds(Utility.timeOnCorrectAnswerPage+Utility.timeOnScoreboardPage));
-        } // restarting the next round is dealt with by the server
+            endgameCallback = () -> {
+                Utility.swapToPageAtTime("n_endgame.fxml", Instant.now().plusSeconds(Utility.timeOnScoreboardPage));
+            };
+        }
+        Utility.swapToPageAtTime("m_scoreboard.fxml", Instant.now().plusSeconds(Utility.timeOnCorrectAnswerPage), endgameCallback);
+        // restarting the next round is dealt with by the server
     }
 
     /** userScoreReceived - From Server - Updates the score of each user, this is done one at a time whilst the clients are looking at the 10 second correct answer reveal

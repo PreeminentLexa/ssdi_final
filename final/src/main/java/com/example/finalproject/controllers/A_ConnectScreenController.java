@@ -31,17 +31,12 @@ public class A_ConnectScreenController extends UtilControllerBase {
     //Action for when the button in Scene A is pressed
     @FXML
     public void goButtonAction(ActionEvent event){
-        try{
-            //Get Username from Textfield
-            username = usernameField.getText();
-            //Get ip from textfield
-            IP = ipField.getText();
-            //join server using inputs (Default Image is 1 for now)
-            Utility.joinServer(IP, username, 1);
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
+        //Get Username from Textfield
+        username = usernameField.getText();
+        //Get ip from textfield
+        IP = ipField.getText();
+        //join server using inputs (Default Image is 1 for now)
+        Utility.joinServer(IP, username, 1);
 
     }
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this

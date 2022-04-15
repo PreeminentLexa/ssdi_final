@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import com.example.finalproject.controllers.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
