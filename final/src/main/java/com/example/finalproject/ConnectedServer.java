@@ -107,8 +107,9 @@ public class ConnectedServer implements Runnable {
             case ServerCallbacks.CODE_ANSWERSGIVEN:
                 ServerCallbacks.allAnswersGiven(this, input, pastInputs, inputFlags);
                 break;
-//            case ServerCallbacks.CODE_PLAYERSCORES:
-//                break;
+            case ServerCallbacks.CODE_PLAYERSCORES:
+                ServerCallbacks.updatePlayerScore(this, input, pastInputs, inputFlags);
+                break;
             case ServerCallbacks.CODE_GAMEDISCONNECT:
                 ServerCallbacks.gameDisconnect(this, input, pastInputs, inputFlags);
                 break;

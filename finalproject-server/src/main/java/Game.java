@@ -195,7 +195,7 @@ public class Game {
 
     public void finishQuestioner(ConnectedClient client, String q, String a1, String a2, String a3, String a4, int correct){
         if(client != questioner){return;}
-        setQandA(q, a1, a3, a3, a4, correct);
+        setQandA(q, a1, a2, a3, a4, correct);
         gameStage_startAnswering();
     }
 
@@ -217,8 +217,6 @@ public class Game {
             int points = calcPoint(delta, answerTime()*1000);
             consoleLog(client, "was given "+points+" points for speed");
             client.addPoints(points);
-            // give client points
-            // tell all players about client's new points
         }
         answerCounts[answered-1]++;
         if((++pplDone) >= (connectedPlayers-1)){
@@ -469,6 +467,9 @@ public class Game {
         String third = null;
         long thirdSpeed = -1;
         for(int i = 0;i < answerSpeeds.length;i++){
+            if(-1 == answerSpeeds[i]){
+                continue;
+            }
             if(-1 == firstSpeed){
                 first = answeredUsers[i];
                 firstSpeed = answerSpeeds[i];
@@ -479,15 +480,21 @@ public class Game {
                 secondSpeed = firstSpeed;
                 third = second;
                 thirdSpeed = secondSpeed;
-            } else if(-1 != secondSpeed && secondSpeed > answerSpeeds[i]){
+            } else if(-1 != firstSpeed && secondSpeed > answerSpeeds[i]){
                 second = answeredUsers[i];
                 secondSpeed = answerSpeeds[i];
                 third = second;
                 thirdSpeed = secondSpeed;
-            } else if(-1 != thirdSpeed && thirdSpeed > answerSpeeds[i]){
+            } else if(-1 != secondSpeed && thirdSpeed > answerSpeeds[i]){
                 third = answeredUsers[i];
                 thirdSpeed = answerSpeeds[i];
             }
+        }
+        if(third == first){third = null;}
+        if(third == second){third = null;}
+        if(second == first){
+            second = third;
+            third = null;
         }
         ConnectedClient[] ranks = new ConnectedClient[3];
         if(null == first){return ranks;}

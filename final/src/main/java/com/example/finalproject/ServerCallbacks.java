@@ -75,8 +75,8 @@ public class ServerCallbacks {
      * @param pastPoppedInputs A String array, the previous inputs that were popped off of the stack
      * @param flags An integer, a set of flags, defined in ConnectedClient.java
      */
-    public static void gameCode(ConnectedServer server, String input, String[] pastPoppedInputs, int flags) {
-        Utility.awaitingUsers_receivedCode(input);
+    public static void gameCode(ConnectedServer server, String input, String[] pastPoppedInputs, int flags){
+        Utility.Think.setCodeArrivedFlag(true, input);
     }
 
     /** hostJoined - Callback from HST command. The host joins (this is done to the non host when the non host joins a game)
@@ -86,7 +86,8 @@ public class ServerCallbacks {
      * @param flags An integer, a set of flags, defined in ConnectedClient.java
      */
     public static void hostJoined(ConnectedServer server, String input, String[] pastPoppedInputs, int flags) {
-        Utility.awaitingUsers_userJoined(input, pastPoppedInputs[0], Integer.parseInt(pastPoppedInputs[1]), true);
+        Utility.Think.setUserJoinedFlag(true, input, pastPoppedInputs[0], Integer.parseInt(pastPoppedInputs[1]), true);
+
     }
 
     /** playerJoined - Callback from USJ command. User has joined a game
@@ -96,7 +97,7 @@ public class ServerCallbacks {
      * @param flags An integer, a set of flags, defined in ConnectedClient.java
      */
     public static void playerJoined(ConnectedServer server, String input, String[] pastPoppedInputs, int flags) {
-        Utility.awaitingUsers_userJoined(input, pastPoppedInputs[0], Integer.parseInt(pastPoppedInputs[1]), false);
+        Utility.Think.setUserJoinedFlag(true, input, pastPoppedInputs[0], Integer.parseInt(pastPoppedInputs[1]), false);
     }
 
     /** playerLeft - Callback from LGM command. User has left a game
@@ -106,7 +107,7 @@ public class ServerCallbacks {
      * @param flags An integer, a set of flags, defined in ConnectedClient.java
      */
     public static void playerLeft(ConnectedServer server, String input, String[] pastPoppedInputs, int flags) {
-        Utility.awaitingUsers_userLeft(input);
+        Utility.Think.setUserLeftFlag(true, input);
     }
 
     /** gameStarted - Callback from GMS command. Round has started
@@ -136,7 +137,7 @@ public class ServerCallbacks {
      * @param flags An integer, a set of flags, defined in ConnectedClient.java
      */
     public static void answererPickedAnswer(ConnectedServer server, String input, String[] pastPoppedInputs, int flags) {
-        Utility.waitingForAnswerers_userPicksAnswer(Integer.parseInt(input));
+        Utility.Think.setPickAnswerFlag(true, Integer.parseInt(input));
     }
 
     /** allAnswersGiven - Callback from AGV command. Round has started
@@ -163,15 +164,17 @@ public class ServerCallbacks {
         Utility.waitingForAnswerers_userPicksAnswer(Integer.parseInt(input));
     }
 
-
-
-
-
-
-
-
-
-
+    /** updatePlayerScore - Callback from PSC command. Round has started
+     * @param server A ConnectedServer, the connected server
+     * @param input A String, the content of this command
+     * @param pastPoppedInputs A String array, the previous inputs that were popped off of the stack
+     * @param flags An integer, a set of flags, defined in ConnectedClient.java
+     */
+    public static void updatePlayerScore(ConnectedServer server, String input, String[] pastPoppedInputs, int flags) {
+        User target = User.getUser(input);
+        if(null == target){return;}
+        target.setScore(Integer.parseInt(pastPoppedInputs[0]));
+    }
 
     /** gameDisconnect - Callback from GDC command. Used to disconnect a user from a game forcibly
      * @param server A ConnectedServer, the connected server
