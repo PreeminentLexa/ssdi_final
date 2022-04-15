@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx" hgap="5" vgap="5"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.finalproject.controllers.N_EndGameController"
-            prefHeight="400.0" prefWidth="600.0">
 
-    <Button GridPane.rowIndex="0" GridPane.columnIndex="0" text="Utility.endGame_returnToMainMenu" onAction="#testReturnToMainMenu"></Button>
-</GridPane>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.N_EndGameController">
+   <children>
+   
+          <Button layoutX="169.0" layoutY="171.0" onAction="#testReturnToMainMenu" prefHeight="57.0" prefWidth="262.0" style="-fx-background-color: #313131; -fx-cursor: hand;" text="Utility.endGame_returnToMainMenu" textFill="WHITE">
+         <font>
+            <Font name="Nunito Regular" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

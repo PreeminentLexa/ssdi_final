@@ -26,7 +26,7 @@
             </Label>
          </children>
       </Group>
-      <Group layoutX="26.0" layoutY="65.0">
+      <Group layoutX="26.0" layoutY="70.0">
          <children>
             <Rectangle arcWidth="5.0" fill="#2e2e2e" height="38.0" stroke="TRANSPARENT" strokeType="INSIDE" width="300.0" />
             <Label fx:id="user2" layoutX="14.0" layoutY="9.0" prefHeight="17.0" prefWidth="233.0" textFill="WHITE">
@@ -36,7 +36,7 @@
             </Label>
          </children>
       </Group>
-      <Group layoutX="26.0" layoutY="105.0">
+      <Group layoutX="26.0" layoutY="118.0">
          <children>
             <Rectangle arcWidth="5.0" fill="#2e2e2e" height="38.0" stroke="TRANSPARENT" strokeType="INSIDE" width="300.0" />
             <Label fx:id="user3" layoutX="14.0" layoutY="11.0" prefHeight="17.0" prefWidth="242.0" textFill="WHITE">
@@ -46,7 +46,7 @@
             </Label>
          </children>
       </Group>
-      <Group layoutX="26.0" layoutY="146.0">
+      <Group layoutX="26.0" layoutY="166.0">
          <children>
             <Rectangle arcWidth="5.0" fill="#2e2e2e" height="38.0" stroke="TRANSPARENT" strokeType="INSIDE" width="300.0" />
             <Label fx:id="user4" layoutX="14.0" layoutY="12.0" prefHeight="17.0" prefWidth="229.0" textFill="WHITE">
@@ -56,7 +56,10 @@
             </Label>
          </children>
       </Group>
-      <Button fx:id="prevButton" layoutY="363.0" mnemonicParsing="false" onAction="#prevButtonAction" prefHeight="38.0" prefWidth="81.0" style="-fx-background-color: #313131;" text="&lt; Prev" textFill="WHITE" />
+      <Button fx:id="prevButton" layoutY="363.0" mnemonicParsing="false" onAction="#prevButtonAction" prefHeight="38.0" prefWidth="81.0" style="-fx-background-color: #313131;" text="&lt; Prev" textFill="WHITE">
+         <font>
+            <Font name="Nunito Regular" size="12.0" />
+         </font></Button>
       <Button fx:id="startButton" layoutX="359.0" layoutY="322.0" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="47.0" prefWidth="209.0" style="-fx-background-color: #61ffd0; -fx-cursor: hand;" text="Start" />
       <Group layoutX="362.0" layoutY="258.0">
          <children>
@@ -95,7 +98,7 @@
             </Label>
             <Label alignment="TOP_CENTER" prefHeight="36.0" prefWidth="209.0" text="Room Code:" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="25.0" />
+                  <Font name="Nunito Regular" size="25.0" />
                </font>
             </Label>
          </children>

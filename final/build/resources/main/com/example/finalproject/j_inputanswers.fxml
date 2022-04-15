@@ -1,27 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<GridPane hgap="5" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.J_InputAnswersController">
-    <Label fx:id="Question" text="Question" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="5" GridPane.rowSpan="30" />
-
-
-    <TextField fx:id="t1" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="15" GridPane.rowSpan="20" />
-    <TextField fx:id="t2" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="20" GridPane.rowSpan="20" />
-    <TextField fx:id="t3" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="25" GridPane.rowSpan="20" />
-    <TextField fx:id="t4" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="30" GridPane.rowSpan="20" />
-
-
-    <Button fx:id="Next" defaultButton="true" onAction="#event" prefHeight="40" prefWidth="100" text="Next" GridPane.columnIndex="35" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1" />
-    <Button fx:id="Prev" defaultButton="true" onAction="#testBack" prefHeight="40" prefWidth="100" text="Back" GridPane.columnIndex="5" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1" />
-
-
-
-    <!--
-    <Button GridPane.rowIndex="0" GridPane.columnIndex="0" text="Utility.inputAnswer_back" onAction="#testBack"/>
-    <Button GridPane.rowIndex="1" GridPane.columnIndex="0" text="Utility.inputAnswer_pickAnswers" onAction="#testPickAnswers"></Button>
--->
-
-</GridPane>
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.J_InputAnswersController">
+   <children>
+       <Label fx:id="Question" alignment="CENTER" layoutX="89.0" layoutY="54.0" prefHeight="32.0" prefWidth="422.0" text="..." textAlignment="CENTER" textFill="WHITE">
+           <font>
+               <Font name="Nunito Regular" size="22.0" />
+           </font>
+       </Label>
+   
+      
+          <TextField fx:id="t1" layoutX="89.0" layoutY="108.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+       <TextField fx:id="t2" layoutX="89.0" layoutY="158.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+       <TextField fx:id="t3" layoutX="89.0" layoutY="208.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+       <TextField fx:id="t4" layoutX="89.0" layoutY="258.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+   
+          <Button layoutX="311.0" layoutY="108.0" onAction="#submit1" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212121; -fx-cursor: hand;" text="Go (1 is Correct)" textFill="#e4e4e4">
+         <font>
+            <Font name="Nunito Regular" size="16.0" />
+         </font>
+      </Button>
+       <Button layoutX="311.0" layoutY="158.0" onAction="#submit2" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212121; -fx-cursor: hand;" text="Go (2 is Correct)" textFill="#e4e4e4">
+         <font>
+            <Font name="Nunito Regular" size="16.0" />
+         </font>
+      </Button>
+       <Button layoutX="311.0" layoutY="208.0" onAction="#submit3" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212121; -fx-cursor: hand;" text="Go (3 is Correct)" textFill="#e4e4e4">
+         <font>
+            <Font name="Nunito Regular" size="16.0" />
+         </font>
+      </Button>
+       <Button layoutX="311.0" layoutY="258.0" onAction="#submit4" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212121; -fx-cursor: hand;" text="Go (4 is Correct)" textFill="#e4e4e4">
+         <font>
+            <Font name="Nunito Regular" size="16.0" />
+         </font>
+      </Button>
+   
+      
+          <!--    <Button fx:id="Next" defaultButton="true" onAction="#event" prefHeight="40" prefWidth="100" text="Next" GridPane.columnIndex="35" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1" />-->
+       <Button fx:id="Prev" defaultButton="true" layoutX="250.0" layoutY="329.0" onAction="#back" prefHeight="40" prefWidth="100" style="-fx-background-color: #313131; -fx-cursor: hand;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Nunito Regular" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

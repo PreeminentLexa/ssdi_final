@@ -2,18 +2,25 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <!--Coded By: Bridget-->
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.G_InputQuestionController">
+    <children>
+        <!--Fix the positions so that they're in the right place. I'll fidgit more later w them (with the size and whatnot-->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.G_InputQuestionController">
-   <children>
-       <!--Fix the positions so that they're in the right place. I'll fidgit more later w them (with the size and whatnot-->
-   
-          <!--Question-->
-               <Label fx:id="Question" layoutX="239.0" layoutY="171.0" text="#Callback_getQuestion" />
-       <!--Next Button-->
-               <Button fx:id="NextButton" defaultButton="true" layoutX="250.0" layoutY="214.0" onAction="#testPickQuestion" prefHeight="40" prefWidth="100" text="Next" />
-   </children>
+        <Label layoutX="247.0" layoutY="116.0" text="Question" textFill="WHITE">
+            <font>
+                <Font name="Nunito Regular" size="26.0" />
+            </font>
+        </Label>
+        <TextField fx:id="Question" layoutX="170.0" layoutY="171.0" prefHeight="35.0" prefWidth="260.0" text="">
+         <font>
+            <Font name="Nunito Regular" size="16.0" />
+         </font></TextField>
+        <Button fx:id="NextButton" defaultButton="true" layoutX="241.0" layoutY="235.0" onAction="#submitQuestion" prefHeight="40" prefWidth="117.0" style="-fx-background-color: #4dffc1; -fx-cursor: hand;" text="Next" />
+    </children>
 </AnchorPane>

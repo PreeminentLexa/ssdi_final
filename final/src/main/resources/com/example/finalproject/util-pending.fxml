@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.G_InputQuestionController">
     <children>
         <!--Fix the positions so that they're in the right place. I'll fidgit more later w them (with the size and whatnot-->
 
-        <Label layoutX="250.0" layoutY="130.0" text="Loading..." textFill="WHITE">
+        <Label layoutX="244.0" layoutY="181.0" text="Loading..." textFill="WHITE">
             <font>
-                <Font name="Nunito Regular" size="22.0" />
+                <Font name="Nunito Regular" size="26.0" />
             </font>
         </Label>
     </children>

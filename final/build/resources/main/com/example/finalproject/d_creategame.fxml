@@ -15,10 +15,10 @@
       </Label>
       <TextField fx:id="roundsField" layoutX="157.0" layoutY="109.0" prefHeight="26.0" prefWidth="35.0" promptText="#" text="5">
          <font>
-            <Font size="17.0" />
+            <Font name="Nunito Regular" size="17.0" />
          </font>
       </TextField>
-      <Label layoutX="61.0" layoutY="161.0" text="Time per Round:" textFill="WHITE">
+      <Label layoutX="60.0" layoutY="166.0" text="Time per Round:" textFill="WHITE">
          <font>
             <Font name="Nunito Regular" size="22.0" />
          </font>
@@ -29,15 +29,9 @@
          </font>
       </Label>
       <TextField fx:id="passwordField" layoutX="182.0" layoutY="230.0" prefHeight="38.0" prefWidth="318.0" promptText="Password" />
-      <Button fx:id="nextButton" layoutX="309.0" layoutY="331.0" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #80ffcc;" text="Next &gt;">
-         <font>
-            <Font name="Nunito Regular" size="12.0" />
-         </font></Button>
-      <Button fx:id="prevButton" layoutX="204.0" layoutY="331.0" mnemonicParsing="false" onAction="#prevButtonAction" prefHeight="38.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="&lt; Prev" textFill="WHITE">
-         <font>
-            <Font name="Nunito Regular" size="12.0" />
-         </font></Button>
-      <TextField fx:id="roundTimeField" layoutX="243.0" layoutY="158.0" prefHeight="19.0" prefWidth="66.0" promptText="#" text="20">
+      <Button fx:id="nextButton" layoutX="309.0" layoutY="331.0" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #4dffc1; -fx-cursor: hand;" text="Next &gt;" />
+      <Button fx:id="prevButton" layoutX="204.0" layoutY="331.0" mnemonicParsing="false" onAction="#prevButtonAction" prefHeight="38.0" prefWidth="85.0" style="-fx-background-color: #313131; -fx-cursor: hand;" text="&lt; Prev" textFill="WHITE" />
+      <TextField fx:id="roundTimeField" layoutX="233.0" layoutY="163.0" prefHeight="19.0" prefWidth="66.0" promptText="#" text="20">
          <font>
             <Font size="17.0" />
          </font>

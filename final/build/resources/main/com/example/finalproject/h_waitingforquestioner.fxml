@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <!--Coded By: Bridget-->
 
-<GridPane hgap="5" prefHeight="400.0" prefWidth="600.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.H_WaitingForQuestionerController">
-    <!--Text-->
 
-    <Label fx:id="Starting" text="Starting. User is the questionner" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="35" GridPane.columnSpan="20" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
-      <font>
-         <Font size="52.0" />
-      </font></Label>
-    <Label fx:id="Waiting" text="Please wait for a question" GridPane.columnIndex="45" GridPane.columnSpan="40" GridPane.rowIndex="69" GridPane.rowSpan="10" />
-
-
-
-</GridPane>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.H_WaitingForQuestionerController">
+   <children>
+       <!--Text-->
+   
+          <Label fx:id="Starting" layoutX="200.0" layoutY="162.0" text="Starting" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Nunito Regular" size="52.0" />
+         </font>
+      </Label>
+       <Label fx:id="Starting2" layoutX="175.0" layoutY="217.0" text="" textAlignment="CENTER" wrapText="true">
+<!--        <font>-->
+<!--            <Font size="52.0" />-->
+<!--        </font></Label>-->
+    </Label>
+       <Label fx:id="Waiting" layoutX="213.0" layoutY="327.0" text="Please wait for a question" textFill="WHITE">
+         <font>
+            <Font name="Nunito Regular" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
