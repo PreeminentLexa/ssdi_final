@@ -17,7 +17,7 @@ Lexa Torrance - lexa.torrance@outlook.com
  
 ![image](https://user-images.githubusercontent.com/71111397/163507444-6583c413-b666-4ead-80b3-ceb60efe3533.png)
 
-4. Choose to either join a game or create a new game
+3. Choose to either join a game or create a new game
 >If Join Game is chosen, skip to Step 6
 
 4. New Game. Choose between Random or Selected. Choose the number of rounds. Password can be made by the host (user) or left blank. 
