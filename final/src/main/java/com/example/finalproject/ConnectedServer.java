@@ -30,7 +30,6 @@ public class ConnectedServer implements Runnable {
      * @param input A String, the line from the client
      */
     private void handleInput(String input){
-//        System.out.println(input);
         if(input.equals("")){return;}
         String cmd = input.substring(0,3);
         input = input.substring(3);

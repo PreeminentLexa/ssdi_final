@@ -62,7 +62,10 @@ public class E_AwaitingUsersController extends UtilControllerBase {
     //When a user joins
     @FXML
     public void Callback_userJoined(User user){
-        System.out.println(user.getUsername()+" - "+userToWrite);
+        if(user.getUID() == userID1){return;}
+        if(user.getUID() == userID2){return;}
+        if(user.getUID() == userID3){return;}
+        if(user.getUID() == userID4){return;}
         switch(userToWrite){
             case 1:
                 if(!User.getLocalUser().isHost()){
@@ -110,25 +113,34 @@ public class E_AwaitingUsersController extends UtilControllerBase {
     } // When a user leaves
     @FXML
     public void Callback_userLeft(User user){
-        for(int i = 0; i < 4;i++){
-            if(i==0 && user.getUID() ==userID1){
-                user1.setText("");
-                userID1 = "";
-            }else if(i==1 && user.getUID() ==userID2){
-                user2.setText("");
-                userID2 = "";
-            }else if(i==2 && user.getUID() ==userID3){
-                user3.setText("");
-                userID3 = "";
-
-            }else if(i==3 && user.getUID() ==userID4){
-                user4.setText("");
-                userID4 = "";
-
-            }
+        if(user.getUID().equals(userID1)){
+            user1.setText(user2.getText());
+            userID1 = userID2;
+            user2.setText(user3.getText());
+            userID2 = userID3;
+            user3.setText(user4.getText());
+            userID3 = userID4;
+            userID4 = "";
+            userToWrite--;
+        } else if(user.getUID().equals(userID2)){
+            user2.setText(user3.getText());
+            userID2 = userID3;
+            user3.setText(user4.getText());
+            userID3 = userID4;
+            user4.setText("");
+            userID4 = "";
+            userToWrite--;
+        } else if(user.getUID().equals(userID3)){
+            user3.setText(user4.getText());
+            userID3 = userID4;
+            user4.setText("");
+            userID4 = "";
+            userToWrite--;
+        } else if(user.getUID().equals(userID4)){
+            user4.setText("");
+            userID4 = "";
+            userToWrite--;
         }
-
-
     } // When a user leaves
 
     //Previous Button in the Bottom Left

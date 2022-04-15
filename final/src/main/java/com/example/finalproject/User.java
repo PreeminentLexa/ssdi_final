@@ -128,6 +128,16 @@ public class User {
         return null;
     }
 
+    public static int topScore(){
+        int max = -1;
+        for(User user : User.getAllUsers()){
+            if(user.getScore() > max){
+                max = user.getScore();
+            }
+        }
+        return max;
+    }
+
     public boolean isHost(){
         return this.host;
     }

@@ -25,7 +25,7 @@ public class C_MainMenuController extends UtilControllerBase {
         Utility.mainMenu_joinGame();
     }
     @FXML
-    public void disconnect(ActionEvent event){
+    public void disconnect(){
         Utility.mainMenu_disconnect();
     }
 
