@@ -5,10 +5,20 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.scene.control.Label?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.N_EndGameController">
    <children>
-   
-          <Button layoutX="169.0" layoutY="171.0" onAction="#testReturnToMainMenu" prefHeight="57.0" prefWidth="262.0" style="-fx-background-color: #313131; -fx-cursor: hand;" text="Utility.endGame_returnToMainMenu" textFill="WHITE">
+       <Label fx:id="text" layoutX="173.0" layoutY="100.0" text="Starting" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+           <font>
+               <Font name="Nunito Regular" size="52.0" />
+           </font>
+       </Label>
+       <Label fx:id="subtext" layoutX="173.0" layoutY="180.0" text="Starting" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+           <font>
+               <Font name="Nunito Regular" size="12.0" />
+           </font>
+       </Label>
+          <Button layoutX="169.0" layoutY="200.0" onAction="#returnToMainMenu" prefHeight="57.0" prefWidth="262.0" style="-fx-background-color: #313131; -fx-cursor: hand;" text="Return to main menu" textFill="WHITE">
          <font>
             <Font name="Nunito Regular" size="12.0" />
          </font>
