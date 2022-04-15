@@ -7,7 +7,7 @@ Azan Sikder - azan.sikder1@gmail.com
 
 Dewan Mohammadd Tasinuzzaman - email@example.com
 
-Lexa Torrance - email@example.com
+Lexa Torrance - lexa.torrance@outlook.com
 ## Visuals
 >Insert photos of the Client Running Here
 ## Instructions
