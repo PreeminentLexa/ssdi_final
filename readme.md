@@ -17,7 +17,7 @@ Lexa Torrance - lexa.torrance@outlook.com
  
 ![image](https://user-images.githubusercontent.com/71111397/163507444-6583c413-b666-4ead-80b3-ceb60efe3533.png)
 
-4. Choose to either join a game or create a new game
+3. Choose to either join a game or create a new game
 >If Join Game is chosen, skip to Step 6
 
 4. New Game. Choose between Random or Selected. Choose the number of rounds. Password can be made by the host (user) or left blank. 
@@ -29,26 +29,29 @@ Lexa Torrance - lexa.torrance@outlook.com
 
 ![image](https://user-images.githubusercontent.com/71111397/163508015-ce0e63a2-4072-4256-801b-64dd74af5a01.png)
 
+![image](https://user-images.githubusercontent.com/71111397/163520901-46e8147d-e7cf-4c39-85ab-59652b0ad04a.png)
 
-7. If you are joining a game, enter the appropriate code and password   
+6. If you are joining a game, enter the appropriate code and password   
 
 ![image](https://user-images.githubusercontent.com/71111397/163508058-2b05ed81-efeb-4a96-ae5c-fc3fd8c9ba73.png)
 
-9. The game starts
-10. If you are the host, you choose the Question by inputting it into the TextField
+
+
+7. The game starts
+8. If you are the host, you choose the Question by inputting it into the TextField
 
 ![image](https://user-images.githubusercontent.com/71111397/163508227-44bb74a4-2070-4ad3-ae6e-501a25ba7e23.png)
 
 
-12. After choosing the question, choose 4 possible answers by inputting them one at a time. Click Next to enter each answer. Select which answer is the correct answer. You can click Prev to return to 8. Otherwise, click next to proceed
+9. After choosing the question, choose 4 possible answers by inputting them one at a time. Click Next to enter each answer. Select which answer is the correct answer. You can click Prev to return to 8. Otherwise, click next to proceed
 
 ![image](https://user-images.githubusercontent.com/71111397/163508300-a51b252a-2173-43e1-800b-85b08d0d19d8.png)
 
-14. If you are not the host, select whichever button you think has the correct answer 
-15. If you are the host, you can see how many people have selected an answer, as well as which one. Round finishes when everyone has answered or when time is up.
-16. Screen displays the correct answer
-17. A Scoreboard is shown, and the host is in? place. After this, the next round starts with someone else as the host
-18. Repeat for as many rounds as you have selected back at 4
+10. If you are not the host, select whichever button you think has the correct answer 
+11. If you are the host, you can see how many people have selected an answer, as well as which one. Round finishes when everyone has answered or when time is up.
+12. Screen displays the correct answer
+13. A Scoreboard is shown, and the host is in? place. After this, the next round starts with someone else as the host
+14. Repeat for as many rounds as you have selected back at 4
 
 ### Server
 1. 
