@@ -49,7 +49,10 @@ public class A_ConnectScreenController extends UtilControllerBase {
     public void Callback_errorMessage(String message){
         label1.setText(message);
     } // for example, failed to connect
-    public void Callback_previousConnectInputs(String ipAdd, String username, int imageIndex){Utility.joinServer(ipAdd, username, 1);}
+    public void Callback_previousConnectInputs(String ipAdd, String username, int imageIndex){
+        ipField.setText(ipAdd);
+        usernameField.setText(username);
+    }
 
 
     // Callable:
