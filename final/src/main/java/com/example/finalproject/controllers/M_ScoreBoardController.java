@@ -43,27 +43,28 @@ public class M_ScoreBoardController extends UtilControllerBase {
 
 
         int n = allUsers.length;
-        int temp = 0;
+        User temp;
         // Sort allUsers into users so that score is decending
         for(int i=0; i < n-1; i++){
             for(int j=0; j < (n-i-1); j++){
                 if(allUsers[j].getScore() < allUsers[j+1].getScore()){
                     //swap elements
-                    temp = allUsers[j].getScore();
-                    allUsers[j].setScore(allUsers[j+1].getScore());
-                    allUsers[j+1].setScore(temp);
+                    temp = allUsers[j];
+                    allUsers[j] = allUsers[j+1];
+                    allUsers[j+1] = temp;
+
                 }
 
             }
         }
-        for(int i = 0;i<n;i++){
+        for(int i = 0;i<=n;i++){
             if(i==0){
                 user1.setText(getScoreText(allUsers[i]));
             }else if(i==1){
                 user2.setText(getScoreText(allUsers[i]));
             }else if(i==2){
                 user3.setText(getScoreText(allUsers[i]));
-            }else if(i==4){
+            }else if(i==3){
                 user4.setText(getScoreText(allUsers[i]));
             }
         }
