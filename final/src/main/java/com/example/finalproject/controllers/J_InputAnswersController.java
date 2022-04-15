@@ -5,7 +5,6 @@ package com.example.finalproject.controllers;
 import com.example.finalproject.Utility;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -14,16 +13,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class J_InputAnswersController extends UtilControllerBase {
-    @FXML
     public Label Question;
-    @FXML
     public TextField t1;
-    @FXML
     public TextField t2;
-    @FXML
     public TextField t3;
-    @FXML
-    public TextField t4;
+    public Button Next;
+    public Button Prev;
 
 
 
@@ -32,39 +27,40 @@ public class J_InputAnswersController extends UtilControllerBase {
     public void Callback_connectionLost(){}
     public void Callback_gameClosed(){}
 
-    public void Callback_getQuestion(String question){ // The question just entered
-        Question.setText(question);
-        saveAnswer = question;
-    }
+    public void Callback_getQuestion(String question){tmp = question;} // The question just entered
 
-    private String saveAnswer;
-    public void back() {
+    private String tmp;
+    public void testBack() {
         Utility.inputAnswer_back();
     }
-
-    private void submit(int correct){
-        if(null == t1.getText()){return;}
-        if(null == t2.getText()){return;}
-        if(null == t3.getText()){return;}
-        if(null == t4.getText()){return;}
-        if(t1.getText().equals("")){return;}
-        if(t2.getText().equals("")){return;}
-        if(t3.getText().equals("")){return;}
-        if(t4.getText().equals("")){return;}
-        Utility.inputAnswer_pickAnswers(saveAnswer, t1.getText(), t2.getText(), t3.getText(), t4.getText(), correct); 
+    public void testPickAnswers() {
+        Utility.inputAnswer_pickAnswers(tmp, "Great", "Good", "Fine", "Amazing", 4);
     }
 
-    public void submit1(){
-        submit(1);
-    }
-    public void submit2(){
-        submit(2);
-    }
-    public void submit3(){
-        submit(3);
-    }
-    public void submit4(){
-        submit(4);
+
+
+    public void event(ActionEvent actionEvent) {
+        if ((t1.getText()!=null)&&(t2.getText()==null)&&(t3.getText()==null)){
+            Callback_getQuestion(t1.getText());
+            testPickAnswers();
+            t1.setVisible(false);
+            t2.setVisible(true);
+            t3.setVisible(false);
+        }
+        if ((t1.getText()!=null)&&(t2.getText()!=null)&&(t3.getText()==null)){
+            Callback_getQuestion(t2.getText());
+            testPickAnswers();
+            t2.setVisible(false);
+            t3.setVisible(true);
+        }
+        if ((t1.getText()!=null)&&(t2.getText()!=null)&&(t3.getText()!=null)){
+            Callback_getQuestion(t3.getText());
+            testPickAnswers();
+            t1.setVisible(false);
+            t2.setVisible(false);
+            t3.setVisible(false);
+        }
+
     }
 
 

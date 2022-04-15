@@ -10,10 +10,10 @@ import java.util.ResourceBundle;
 
 public class K_WaitingForAnswerersController extends UtilControllerBase {
     public Label Question;
-    public static Label L1;
-    public static Label L2;
-    public static Label L3;
-    public static Label L4;
+    public Label L1;
+    public Label L2;
+    public Label L3;
+    public Label L4;
     public Button Button1;
     public Button Button2;
     public Button Button3;
