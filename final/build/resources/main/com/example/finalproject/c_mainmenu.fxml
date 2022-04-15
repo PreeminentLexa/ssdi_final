@@ -5,18 +5,19 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.C_MainMenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.C_MainMenuController">
    <children>
-      <Group fx:id="ngButton" layoutX="120.0" layoutY="155.0" onMouseClicked="#newGameAction">
+      <Group fx:id="ngButton" layoutX="120.0" layoutY="155.0" onMouseClicked="#newGameAction" style="-fx-cursor: hand;">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="79.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="90.0" fitWidth="79.0" layoutX="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@assets/newgame(2).png" />
                </image>
             </ImageView>
          </children></Group>
-      <Group fx:id="jgButton" layoutX="388.0" layoutY="155.0" onMouseClicked="#joinGameAction">
+      <Group fx:id="jgButton" layoutX="388.0" layoutY="155.0" onMouseClicked="#joinGameAction" style="-fx-cursor: hand;">
          <children>
             <ImageView fitHeight="90.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,6 +25,9 @@
                </image>
             </ImageView>
          </children></Group>
-      <Button fx:id="disconnectButton" layoutY="375.20001220703125" mnemonicParsing="false" text="Disconnect " />
+      <Button fx:id="disconnectButton" layoutY="361.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: #ff4d4d; -fx-cursor: hand;" text="Disconnect ">
+         <font>
+            <Font name="Nunito Regular" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>
