@@ -51,9 +51,6 @@ public class A_ConnectScreenController extends UtilControllerBase {
     } // for example, failed to connect
     public void Callback_previousConnectInputs(String ipAdd, String username, int imageIndex){Utility.joinServer(ipAdd, username, 1);}
 
-//    public void testJoinServer() {
-//        Utility.joinServer("localhost:8081", "Lexa", 1);
-//    }
 
     // Callable:
     // Utility.joinServer(String IP, String Username, int imageNumber);

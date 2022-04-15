@@ -5,35 +5,34 @@
 <?import javafx.scene.text.*?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.M_ScoreBoardController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="284.0" minHeight="10.0" prefHeight="284.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Pane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Label layoutX="28.0" layoutY="74.0" text="1." />
-            <Label layoutX="28.0" layoutY="91.0" text="2." />
-            <Label layoutX="28.0" layoutY="108.0" text="3." />
-            <Label layoutX="28.0" layoutY="125.0" text="4." />
-            <Label fx:id="user1" layoutX="65.0" layoutY="74.0" />
-            <Label fx:id="user2" layoutX="65.0" layoutY="91.0" />
-            <Label fx:id="user3" layoutX="65.0" layoutY="108.0" />
-            <Label fx:id="user4" layoutX="65.0" layoutY="125.0" />
-            <Label layoutX="158.0" layoutY="74.0" text="WINNER!" />
-         </children>
-      </Pane>
-      <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next &gt;" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-      <Label text="LEADERBOARD" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button fx:id="displayButton" mnemonicParsing="false" onAction="#setScoreBoard" text="Display" GridPane.rowIndex="1" />
-   </children>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="284.0" minHeight="10.0" prefHeight="284.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <Label layoutX="28.0" layoutY="74.0" text="1." />
+                <Label layoutX="28.0" layoutY="91.0" text="2." />
+                <Label layoutX="28.0" layoutY="108.0" text="3." />
+                <Label layoutX="28.0" layoutY="125.0" text="4." />
+                <Label fx:id="user1" layoutX="65.0" layoutY="74.0" />
+                <Label fx:id="user2" layoutX="65.0" layoutY="91.0" />
+                <Label fx:id="user3" layoutX="65.0" layoutY="108.0" />
+                <Label fx:id="user4" layoutX="65.0" layoutY="125.0" />
+            </children>
+        </Pane>
+<!--        <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextButtonAction" text="Next &gt;" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />-->
+<!--        <Label text="LEADERBOARD" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">-->
+<!--            <font>-->
+<!--                <Font size="20.0" />-->
+<!--            </font>-->
+<!--        </Label>-->
+<!--        <Button fx:id="displayButton" mnemonicParsing="false" onAction="#setScoreBoard" text="Display" GridPane.rowIndex="1" />-->
+    </children>
 </GridPane>

@@ -6,28 +6,32 @@
 
 <GridPane hgap="5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.L_CorrectAnswerRevealController">
 
-   <children>
-       <Label fx:id="Question" text="Question?" GridPane.columnIndex="45" GridPane.columnSpan="30" GridPane.rowIndex="5" GridPane.rowSpan="40">
-         <font>
-            <Font size="29.0" />
-         </font></Label>
+    <children>
+        <Label fx:id="Question" text="Question?" GridPane.columnIndex="45" GridPane.columnSpan="30" GridPane.rowIndex="5" GridPane.rowSpan="40">
+            <font>
+                <Font size="29.0" />
+            </font></Label>
 
 
 
-       <!--Buttons-->
-        <Button fx:id="Button1" defaultButton="true" prefHeight="51.0" prefWidth="206.0" text="Answer1" GridPane.columnIndex="15" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-         <Button fx:id="Button2" defaultButton="true" prefHeight="51.0" prefWidth="201.0" text="Answer2" GridPane.columnIndex="65" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1">
+        <!--Buttons-->
+        <Button fx:id="Button1" disable="true" prefHeight="51.0" prefWidth="206.0" text="Answer1" GridPane.columnIndex="15" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1">
+            <font>
+                <Font size="14.0" />
+            </font></Button>
+        <Button fx:id="Button2" disable="true" prefHeight="51.0" prefWidth="201.0" text="Answer2" GridPane.columnIndex="65" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1">
 
-       </Button>
-       <Button fx:id="Button3" defaultButton="true" prefHeight="50.0" prefWidth="205.0" text="Answer3" GridPane.columnIndex="15" GridPane.columnSpan="200" GridPane.rowIndex="55" GridPane.rowSpan="1">
+        </Button>
+        <Button fx:id="Button3" disable="true" prefHeight="50.0" prefWidth="205.0" text="Answer3" GridPane.columnIndex="15" GridPane.columnSpan="200" GridPane.rowIndex="55" GridPane.rowSpan="1">
 
-       </Button>
-       <Button fx:id="Button4" defaultButton="true" prefHeight="49.0" prefWidth="203.0" text="Answer4" GridPane.columnIndex="65" GridPane.columnSpan="200" GridPane.rowIndex="55" GridPane.rowSpan="1">
+        </Button>
+        <Button fx:id="Button4" disable="true" prefHeight="49.0" prefWidth="203.0" text="Answer4" GridPane.columnIndex="65" GridPane.columnSpan="200" GridPane.rowIndex="55" GridPane.rowSpan="1">
 
-       </Button>
-   </children>
- 
+        </Button>
+        <Label fx:id="L1" text="" GridPane.columnIndex="35" GridPane.columnSpan="20" GridPane.rowIndex="19" GridPane.rowSpan="50" />
+        <Label fx:id="L2" text="" GridPane.columnIndex="85" GridPane.columnSpan="20" GridPane.rowIndex="19" GridPane.rowSpan="50" />
+        <Label fx:id="L3" text="" GridPane.columnIndex="35" GridPane.columnSpan="20" GridPane.rowIndex="30" GridPane.rowSpan="50" />
+        <Label fx:id="L4" text="" GridPane.columnIndex="85" GridPane.columnSpan="20"  GridPane.rowIndex="30" GridPane.rowSpan="50"  />
+    </children>
+
 </GridPane>

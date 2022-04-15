@@ -161,7 +161,6 @@ public class ServerCallbacks {
                 Integer.parseInt(input),
 
         });
-        Utility.waitingForAnswerers_userPicksAnswer(Integer.parseInt(input));
     }
 
     /** updatePlayerScore - Callback from PSC command. Round has started
@@ -172,7 +171,7 @@ public class ServerCallbacks {
      */
     public static void updatePlayerScore(ConnectedServer server, String input, String[] pastPoppedInputs, int flags) {
         User target = User.getUser(input);
-        if(null == target){return;}
+        if(null == target){return;} // Work on, request this user
         target.setScore(Integer.parseInt(pastPoppedInputs[0]));
     }
 

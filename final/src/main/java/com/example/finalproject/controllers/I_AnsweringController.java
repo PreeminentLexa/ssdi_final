@@ -3,6 +3,7 @@ package com.example.finalproject.controllers;
 // The Controller for frame I
 
 import com.example.finalproject.Utility;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -32,8 +33,28 @@ public class I_AnsweringController extends UtilControllerBase {
 
     } // correct will be -1, because it shouldn't be used here
 
-    public void testPick() {
+    private void disableButtons(){
+        Button1.setDisable(true);
+        Button2.setDisable(true);
+        Button3.setDisable(true);
+        Button4.setDisable(true);
+    }
+
+    public void answer1(){
         Utility.answering_pick(1);
+        disableButtons();
+    }
+    public void answer2(){
+        Utility.answering_pick(2);
+        disableButtons();
+    }
+    public void answer3(){
+        Utility.answering_pick(3);
+        disableButtons();
+    }
+    public void answer4(){
+        Utility.answering_pick(4);
+        disableButtons();
     }
 
     // Callable:

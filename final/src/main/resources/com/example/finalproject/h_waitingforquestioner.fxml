@@ -9,10 +9,15 @@
 <GridPane hgap="5" prefHeight="400.0" prefWidth="600.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.H_WaitingForQuestionerController">
     <!--Text-->
 
-    <Label fx:id="Starting" text="Starting. User is the questionner" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="35" GridPane.columnSpan="20" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+    <Label fx:id="Starting" text="Starting" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="35" GridPane.columnSpan="20" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
       <font>
          <Font size="52.0" />
       </font></Label>
+    <Label fx:id="Starting2" text="" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="35" GridPane.columnSpan="20" GridPane.rowIndex="12" GridPane.rowSpan="2147483647">
+<!--        <font>-->
+<!--            <Font size="52.0" />-->
+<!--        </font></Label>-->
+    </Label>
     <Label fx:id="Waiting" text="Please wait for a question" GridPane.columnIndex="45" GridPane.columnSpan="40" GridPane.rowIndex="69" GridPane.rowSpan="10" />
 
 

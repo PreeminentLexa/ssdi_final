@@ -81,7 +81,8 @@ public class Utility {
             Utility.controller = fxmlLoader.getController();
         } catch(IOException e){
             System.err.println("Unable to switch to "+resource);
-            System.err.println(e);
+//            System.err.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -181,11 +182,11 @@ public class Utility {
             pickup_SchedulePage3 = pickup3;
         }
         private static void onSchedulePageFlag(){
+            flag_SchedulePage = false;
             Utility.swapToPage(pickup_SchedulePage1, pickup_SchedulePage2);
             if(null != pickup_SchedulePage3){
                 pickup_SchedulePage3.run();
             }
-            flag_SchedulePage = false;
             pickup_SchedulePage1 = null;
             pickup_SchedulePage2 = null;
             pickup_SchedulePage3 = null;
@@ -199,8 +200,8 @@ public class Utility {
             flag_ConnectionClosed = val;
         }
         private static void onConnectionClosedFlag(){
-            Utility.serverConnectionLost();
             flag_ConnectionClosed = false;
+            Utility.serverConnectionLost();
         }
 
         /////////////////////////
@@ -211,8 +212,8 @@ public class Utility {
             flag_GameClosed = val;
         }
         private static void onGameClosedFlag(){
-            Utility.gameClosed();
             flag_GameClosed = false;
+            Utility.gameClosed();
         }
 
         /////////////////
@@ -225,9 +226,9 @@ public class Utility {
             flag_JoinedGame = val;
         }
         private static void onJoinedGameFlag(){
+            flag_JoinedGame = false;
             Utility.awaitingUsers_connected(pickup_JoinedGame1);
             pickup_JoinedGame1 = null;
-            flag_JoinedGame = false;
         }
 
         /////////////////
@@ -240,8 +241,8 @@ public class Utility {
             pickup_JoinFailed1 = pickup1;
         }
         private static void onJoinFailedFlag(){
-            Utility.joinGame_failed(pickup_JoinFailed1);
             flag_JoinFailed = false;
+            Utility.joinGame_failed(pickup_JoinFailed1);
             pickup_JoinFailed1 = null;
         }
 
@@ -255,8 +256,8 @@ public class Utility {
             pickup_GameStarted1 = pickup1;
         }
         private static void onGameStartedFlag(){
-            awaitingUsers_gameStarted(pickup_GameStarted1);
             flag_GameStarted = false;
+            awaitingUsers_gameStarted(pickup_GameStarted1);
             pickup_GameStarted1 = null;
         }
 
@@ -270,8 +271,8 @@ public class Utility {
             pickup_CodeArrived1 = pickup1;
         }
         private static void onCodeArrivedFlag(){
-            Utility.awaitingUsers_receivedCode(pickup_CodeArrived1);
             flag_CodeArrived = false;
+            Utility.awaitingUsers_receivedCode(pickup_CodeArrived1);
             pickup_CodeArrived1 = null;
         }
 
@@ -287,8 +288,8 @@ public class Utility {
             pickup_QuestionerFinished2 = pickup2;
         }
         private static void onQuestionerFinishedFlag(){
-            Utility.waitingForQuestioner_questionerDone(pickup_QuestionerFinished1, pickup_QuestionerFinished2[0], pickup_QuestionerFinished2[1], pickup_QuestionerFinished2[2], pickup_QuestionerFinished2[3], pickup_QuestionerFinished2[4]);
             flag_QuestionerFinished = false;
+            Utility.waitingForQuestioner_questionerDone(pickup_QuestionerFinished1, pickup_QuestionerFinished2[0], pickup_QuestionerFinished2[1], pickup_QuestionerFinished2[2], pickup_QuestionerFinished2[3], pickup_QuestionerFinished2[4]);
             pickup_QuestionerFinished1 = -1;
             pickup_QuestionerFinished2 = null;
         }
@@ -303,8 +304,8 @@ public class Utility {
             pickup_PickAnswer1 = pickup1;
         }
         private static void onPickAnswerFlag(){
-            Utility.waitingForAnswerers_userPicksAnswer(pickup_PickAnswer1);
             flag_PickAnswer = false;
+            Utility.waitingForAnswerers_userPicksAnswer(pickup_PickAnswer1);
             pickup_PickAnswer1 = -1;
         }
 
@@ -320,8 +321,8 @@ public class Utility {
             pickup_DoneAnswering2 = pickup2;
         }
         private static void onDoneAnsweringFlag(){
-            Utility.allAnsweredOrTimeDone(pickup_DoneAnswering1[0], pickup_DoneAnswering1[1], pickup_DoneAnswering1[2], pickup_DoneAnswering1[3], pickup_DoneAnswering1[4], pickup_DoneAnswering2[0], pickup_DoneAnswering2[1], pickup_DoneAnswering2[2], pickup_DoneAnswering2[3], pickup_DoneAnswering2[4]);
             flag_DoneAnswering = false;
+            Utility.allAnsweredOrTimeDone(pickup_DoneAnswering1[0], pickup_DoneAnswering1[1], pickup_DoneAnswering1[2], pickup_DoneAnswering1[3], pickup_DoneAnswering1[4], pickup_DoneAnswering2[0], pickup_DoneAnswering2[1], pickup_DoneAnswering2[2], pickup_DoneAnswering2[3], pickup_DoneAnswering2[4]);
             pickup_DoneAnswering1 = null;
             pickup_DoneAnswering2 = null;
         }
@@ -342,12 +343,12 @@ public class Utility {
             pickup_ConnectEnded3 = pickup3;
         }
         private static void onConnectEndedFlag(){
+            flag_ConnectEnded = false;
             if(pickup_ConnectEnded1){
                 Utility.joinServer_success(pickup_ConnectEnded2, pickup_ConnectEnded3);
             } else {
                 Utility.joinServer_failed();
             }
-            flag_ConnectEnded = false;
             pickup_ConnectEnded1 = false;
             pickup_ConnectEnded2 = null;
             pickup_ConnectEnded3 = -1;
@@ -356,25 +357,49 @@ public class Utility {
         /////////////////
         // User Joined //
         /////////////////
+        public static class UserJoinedQueue{
+            public String uid;
+            public String username;
+            public int image; // unused
+            public boolean host; // unused
+            public UserJoinedQueue next = null;
+            public UserJoinedQueue(String uid, String username, int image, boolean host){
+                this.uid = uid;
+                this.username = username;
+                this.image = image;
+                this.host = host;
+            }
+            public static UserJoinedQueue makeThing(UserJoinedQueue parent, String uid, String username, int image, boolean host){
+                UserJoinedQueue thing = new UserJoinedQueue(uid, username, image, host);
+                if(null==parent){
+                    return thing;
+                }
+                parent.next = thing;
+                return parent;
+            }
+        }
         public static boolean flag_UserJoined = false;
-        public static String pickup_UserJoined1 = null; // uid
-        public static String pickup_UserJoined2 = null; // username
-        public static int pickup_UserJoined3 = -1; // image
-        public static boolean pickup_UserJoined4 = false; // host
+        public static UserJoinedQueue pickup_UserJoined1 = null;
+        public static UserJoinedQueue pickup_UserJoined2 = null;
         public static void setUserJoinedFlag(boolean val, String pickup1, String pickup2, int pickup3, boolean pickup4){
+//            System.out.println("From server: "+pickup2+" "+(pickup4?"T":"F"));
             flag_UserJoined = val;
-            pickup_UserJoined1 = pickup1;
-            pickup_UserJoined2 = pickup2;
-            pickup_UserJoined3 = pickup3;
-            pickup_UserJoined4 = pickup4;
+            pickup_UserJoined1 = UserJoinedQueue.makeThing(pickup_UserJoined1, pickup1, pickup2, pickup3, pickup4);
+        }
+        public static void setUserJoinedFlagMe(String pickup1, String pickup2, int pickup3, boolean pickup4){
+            pickup_UserJoined2 = new UserJoinedQueue(pickup1, pickup2, pickup3, pickup4);
         }
         private static void onUserJoinedFlag(){
-            Utility.awaitingUsers_userJoined(pickup_UserJoined1, pickup_UserJoined2, pickup_UserJoined3, pickup_UserJoined4);
             flag_UserJoined = false;
+            while(null != pickup_UserJoined1){
+                Utility.awaitingUsers_userJoined(pickup_UserJoined1.uid, pickup_UserJoined1.username, pickup_UserJoined1.image, pickup_UserJoined1.host);
+                pickup_UserJoined1 = pickup_UserJoined1.next;
+            }
+            if(null!=pickup_UserJoined2){
+                Utility.awaitingUsers_userJoined(pickup_UserJoined2.uid, pickup_UserJoined2.username, pickup_UserJoined2.image, pickup_UserJoined2.host);
+            }
             pickup_UserJoined1 = null;
             pickup_UserJoined2 = null;
-            pickup_UserJoined3 = -1;
-            pickup_UserJoined4 = false;
         }
 
         ///////////////
@@ -387,25 +412,27 @@ public class Utility {
             pickup_UserLeft1 = pickup1;
         }
         private static void onUserLeftFlag(){
-            Utility.awaitingUsers_userLeft(pickup_UserLeft1);
             flag_UserLeft = false;
+            Utility.awaitingUsers_userLeft(pickup_UserLeft1);
             pickup_UserLeft1 = null;
         }
 
-        //////////////////
-        // xxxxxxxxxxxx //
-        //////////////////
-        public static boolean flag_xxxx = false;
-        public static String pickup_xxxx1 = null;
-        public static void setXxxxFlag(boolean val, String pickup1){
-            flag_xxxx = val;
-            pickup_xxxx1 = pickup1;
-        }
-        private static void onXxxxFlag(){
-            Utility.joinGame_failed(pickup_xxxx1);
-            flag_xxxx = false;
-            pickup_xxxx1 = null;
-        }
+        /*
+            //////////////////
+            // xxxxxxxxxxxx //
+            //////////////////
+            public static boolean flag_xxxx = false;
+            public static String pickup_xxxx1 = null;
+            public static void setXxxxFlag(boolean val, String pickup1){
+                flag_xxxx = val;
+                pickup_xxxx1 = pickup1;
+            }
+            private static void onXxxxFlag(){
+                Utility.joinGame_failed(pickup_xxxx1);
+                flag_xxxx = false;
+                pickup_xxxx1 = null;
+            }
+        */
     }
 
 
@@ -552,6 +579,9 @@ public class Utility {
         }
         Utility.game = new Game(gameSettings);
         Utility.game.setCode(Utility.tempCode);
+//        Utility.controller.Callback_userJoined(User.getLocalUser());
+        User lcl = User.getLocalUser();
+        Utility.Think.setUserJoinedFlagMe(lcl.getUID(), lcl.getUsername(), lcl.getImageIndex(), false);
         Utility.controller.Callback_getGameCode(Utility.tempCode);
         Utility.controller.Callback_getGameSettings(gameSettings);
         Utility.tempCode = null;
@@ -572,6 +602,7 @@ public class Utility {
         User.getLocalUser().setIsHost(true);
         Utility.game = new Game(gameSettings);
         Utility.game.setCode(code);
+        Utility.controller.Callback_userJoined(User.getLocalUser());
         Utility.controller.Callback_getGameCode(code);
         Utility.controller.Callback_getGameSettings(gameSettings);
         Utility.tempSettings = null;
@@ -619,6 +650,9 @@ public class Utility {
             Utility.swapToPage("g_inputquestion.fxml");
         } else {
             Utility.swapToPage("h_waitingforquestioner.fxml");
+            for(User user : User.getAllUsers()){
+                System.out.println(user.getUsername() + " " + user.getUID());
+            }
             Utility.controller.Callback_waitingForQuestioner(User.getUser(uid));
         }
     }

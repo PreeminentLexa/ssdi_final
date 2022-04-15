@@ -54,16 +54,33 @@ public class User {
     private static User[] allUsers = new User[1];
     private static int userCount = 0;
     private static void checkArraySize(){
-        if(userCount < allUsers.length){return;}
+        if(userCount < allUsers.length){
+            return;
+        }
         User[] newAllUsers = new User[allUsers.length*2];
         for(int i = 0;i < userCount;i++){
             newAllUsers[i] = allUsers[i];
         }
         allUsers = newAllUsers;
     }
+    private static boolean isCreating = false;
     private static void addUser(User user){
+        if(isCreating){
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            addUser(user);
+        }
+        isCreating = true;
+        if(null!=getUser(user.getUID())){ // duplicate
+            isCreating = false;
+            return;
+        }
         checkArraySize();
         allUsers[userCount++] = user;
+        isCreating = false;
     }
     public static User getUser(String uid){
         for(int i = 0;i < userCount;i++){

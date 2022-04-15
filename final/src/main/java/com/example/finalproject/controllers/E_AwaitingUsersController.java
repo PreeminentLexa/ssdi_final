@@ -7,6 +7,7 @@ import com.example.finalproject.User;
 import com.example.finalproject.Utility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
@@ -16,6 +17,8 @@ import java.util.ResourceBundle;
  * @author Azan
  */
 public class E_AwaitingUsersController extends UtilControllerBase {
+    @FXML
+    public Button startButton;
     @FXML
     Label codeLabel;
     @FXML
@@ -55,30 +58,54 @@ public class E_AwaitingUsersController extends UtilControllerBase {
     }
 
 
+    private int userToWrite = 1;
     //When a user joins
     @FXML
     public void Callback_userJoined(User user){
-        for(int i = 0; i < 4; i++){
-            if(i==0 && user1.getText()==""){
+        System.out.println(user.getUsername()+" - "+userToWrite);
+        switch(userToWrite){
+            case 1:
+                if(!User.getLocalUser().isHost()){
+                    startButton.setVisible(false);
+                }
                 user1.setText(user.getUsername());
                 userID1 = user.getUID();
-                i=4;
-            }else if(i==1 && user2.getText()==""){
+                break;
+            case 2:
                 user2.setText(user.getUsername());
                 userID2 = user.getUID();
-                i=4;
-            }else if(i==2 && user3.getText()==""){
+                break;
+            case 3:
                 user3.setText(user.getUsername());
                 userID3 = user.getUID();
-                i=4;
-
-            }else if(i==3 && user4.getText()==""){
+                break;
+            case 4:
                 user4.setText(user.getUsername());
                 userID4 = user.getUID();
-                i=4;
-
-            }
+                break;
         }
+        userToWrite++;
+//        for(int i = 0; i < 4; i++){
+//            if(i==0 && user1.getText()==""){
+//                user1.setText(user.getUsername());
+//                userID1 = user.getUID();
+//                i=4;
+//            }else if(i==1 && user2.getText()==""){
+//                user2.setText(user.getUsername());
+//                userID2 = user.getUID();
+//                i=4;
+//            }else if(i==2 && user3.getText()==""){
+//                user3.setText(user.getUsername());
+//                userID3 = user.getUID();
+//                i=4;
+//
+//            }else if(i==3 && user4.getText()==""){
+//                user4.setText(user.getUsername());
+//                userID4 = user.getUID();
+//                i=4;
+//
+//            }
+//        }
 
     } // When a user leaves
     @FXML
