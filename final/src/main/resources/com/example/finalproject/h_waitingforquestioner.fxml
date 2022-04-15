@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <!--Coded By: Bridget-->
 
+<GridPane hgap="5" prefHeight="400.0" prefWidth="600.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.H_WaitingForQuestionerController">
+    <!--Text-->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.H_WaitingForQuestionerController">
-   <children>
-       <!--Text-->
-   
-          <Label fx:id="Starting" layoutX="103.0" layoutY="99.0" prefHeight="158.0" prefWidth="395.0" text="Starting. User is the Questionner" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font name="Nunito Regular" size="38.0" />
-         </font>
-      </Label>
-       <Label fx:id="Waiting" layoutX="213.0" layoutY="268.0" text="Please wait for a question" textFill="WHITE">
-         <font>
-            <Font name="Nunito Regular" size="15.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+    <Label fx:id="Starting" text="Starting. User is the questionner" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="35" GridPane.columnSpan="20" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+      <font>
+         <Font size="52.0" />
+      </font></Label>
+    <Label fx:id="Waiting" text="Please wait for a question" GridPane.columnIndex="45" GridPane.columnSpan="40" GridPane.rowIndex="69" GridPane.rowSpan="10" />
+
+
+
+</GridPane>

@@ -81,8 +81,7 @@ public class Utility {
             Utility.controller = fxmlLoader.getController();
         } catch(IOException e){
             System.err.println("Unable to switch to "+resource);
-//            System.err.println(e);
-            e.printStackTrace();
+            System.err.println(e);
         }
     }
 
