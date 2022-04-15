@@ -13,14 +13,12 @@
    <children>
        <!--Fix the positions so that they're in the right place. I'll fidgit more later w them (with the size and whatnot-->
    
-          <!--Question-->
        <Label layoutX="250.0" layoutY="130.0" text="Question" textFill="WHITE">
            <font>
                <Font name="Nunito Regular" size="22.0" />
            </font>
        </Label>
-       <TextField fx:id="Question" layoutX="230.0" layoutY="171.0" text="" ></TextField>
-       <!--Next Button-->
-               <Button fx:id="NextButton" defaultButton="true" layoutX="250.0" layoutY="214.0" onAction="#submitQuestion" prefHeight="40" prefWidth="100" text="Next" />
+       <TextField fx:id="Question" layoutX="225.0" layoutY="171.0" text="" ></TextField>
+       <Button fx:id="NextButton" defaultButton="true" layoutX="250.0" layoutY="214.0" onAction="#submitQuestion" prefHeight="40" prefWidth="100" text="Next" />
    </children>
 </AnchorPane>
