@@ -38,20 +38,32 @@ Lexa Torrance - lexa.torrance@outlook.com
 
 
 7. The game starts
-8. If you are the host, you choose the Question by inputting it into the TextField
+8. A random user is chosen and is prompted to write a question
 
-![image](https://user-images.githubusercontent.com/71111397/163508227-44bb74a4-2070-4ad3-ae6e-501a25ba7e23.png)
+![image](https://user-images.githubusercontent.com/71111397/163565679-18507093-6c3c-4900-bb19-d82a3be0f4a6.png)
 
 
-9. After choosing the question, choose 4 possible answers by inputting them one at a time. Click Next to enter each answer. Select which answer is the correct answer. You can click Prev to return to 8. Otherwise, click next to proceed
+9. After choosing the question, choose 4 possible answers and then select which one is correct
 
-![image](https://user-images.githubusercontent.com/71111397/163508300-a51b252a-2173-43e1-800b-85b08d0d19d8.png)
+![image](https://user-images.githubusercontent.com/71111397/163565699-738d3980-1630-4d3f-9a9b-dd76103e578f.png)
 
-10. If you are not the host, select whichever button you think has the correct answer 
-11. If you are the host, you can see how many people have selected an answer, as well as which one. Round finishes when everyone has answered or when time is up.
-12. Screen displays the correct answer
-13. A Scoreboard is shown, and the host is in? place. After this, the next round starts with someone else as the host
-14. Repeat for as many rounds as you have selected back at 4
+10. The question and answer is shown on screen for everyone to see, everyone but the questioner chosen can answer. Round finishes when everyone has answered or when time is up.
+
+
+11. Screen displays the correct answer
+
+![image](https://user-images.githubusercontent.com/71111397/163565839-a450138b-07db-4ce6-9cd1-031a9a897a2f.png)
+
+12. A Scoreboard is shown showing who is winning. After this, the next round starts with someone else as the questioner
+
+![image](https://user-images.githubusercontent.com/71111397/163565881-0ec19852-48f4-4c90-81fa-9d77194485c2.png)
+
+13. Repeat for as many rounds as you have selected
+14. When the game ends, all users are shown if they lost or won with scores included
+
+![image](https://user-images.githubusercontent.com/71111397/163565979-472b6091-829d-49ac-9b11-180c4e617bc0.png)
+
+![image](https://user-images.githubusercontent.com/71111397/163565984-b8faf5ac-8814-45ae-8b3a-61bd76ed882d.png)
 
 ### Server
 1. 
@@ -62,7 +74,7 @@ java -jar Server.jar
 
 ![image](https://user-images.githubusercontent.com/71111397/163507796-9ae22601-1f02-40bf-bde0-89328c8432ae.png)
 
-## Usage
 
 ## Video Demo
->INSERT VIDEO HERE
+[LINK](https://www.youtube.com/watch?v=zjqeh3lGpIM)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/zjqeh3lGpIM/0.jpg)](https://www.youtube.com/watch?v=zjqeh3lGpIM)
