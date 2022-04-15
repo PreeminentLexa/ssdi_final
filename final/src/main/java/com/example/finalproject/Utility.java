@@ -53,7 +53,7 @@ public class Utility {
 
 
         if(null == ste){
-            ste = Thread.currentThread().getStackTrace()[2];
+            ste = Thread.currentThread().getStackTrace()[3];
         }
         System.out.println(
                 " from "+
@@ -81,7 +81,8 @@ public class Utility {
             Utility.controller = fxmlLoader.getController();
         } catch(IOException e){
             System.err.println("Unable to switch to "+resource);
-            System.err.println(e);
+//            System.err.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -158,7 +159,10 @@ public class Utility {
             if(Think.flag_JoinFailed){onJoinFailedFlag();}
             if(Think.flag_GameStarted){onGameStartedFlag();}
             if(Think.flag_CodeArrived){onCodeArrivedFlag();}
+            if(Think.flag_UserJoined){onUserJoinedFlag();}
+            if(Think.flag_UserLeft){onUserLeftFlag();}
             if(Think.flag_QuestionerFinished){onQuestionerFinishedFlag();}
+            if(Think.flag_PickAnswer){onPickAnswerFlag();}
             if(Think.flag_DoneAnswering){onDoneAnsweringFlag();}
         }
 
@@ -293,6 +297,21 @@ public class Utility {
         ////////////////////
         // Done Answering //
         ////////////////////
+        public static boolean flag_PickAnswer = false;
+        public static int pickup_PickAnswer1 = -1;
+        public static void setPickAnswerFlag(boolean val, int pickup1){
+            flag_PickAnswer = val;
+            pickup_PickAnswer1 = pickup1;
+        }
+        private static void onPickAnswerFlag(){
+            Utility.waitingForAnswerers_userPicksAnswer(pickup_PickAnswer1);
+            flag_PickAnswer = false;
+            pickup_PickAnswer1 = -1;
+        }
+
+        ////////////////////
+        // Done Answering //
+        ////////////////////
         public static boolean flag_DoneAnswering = false;
         public static String[] pickup_DoneAnswering1 = null;
         public static int[] pickup_DoneAnswering2 = null;
@@ -333,6 +352,45 @@ public class Utility {
             pickup_ConnectEnded1 = false;
             pickup_ConnectEnded2 = null;
             pickup_ConnectEnded3 = -1;
+        }
+
+        /////////////////
+        // User Joined //
+        /////////////////
+        public static boolean flag_UserJoined = false;
+        public static String pickup_UserJoined1 = null; // uid
+        public static String pickup_UserJoined2 = null; // username
+        public static int pickup_UserJoined3 = -1; // image
+        public static boolean pickup_UserJoined4 = false; // host
+        public static void setUserJoinedFlag(boolean val, String pickup1, String pickup2, int pickup3, boolean pickup4){
+            flag_UserJoined = val;
+            pickup_UserJoined1 = pickup1;
+            pickup_UserJoined2 = pickup2;
+            pickup_UserJoined3 = pickup3;
+            pickup_UserJoined4 = pickup4;
+        }
+        private static void onUserJoinedFlag(){
+            Utility.awaitingUsers_userJoined(pickup_UserJoined1, pickup_UserJoined2, pickup_UserJoined3, pickup_UserJoined4);
+            flag_UserJoined = false;
+            pickup_UserJoined1 = null;
+            pickup_UserJoined2 = null;
+            pickup_UserJoined3 = -1;
+            pickup_UserJoined4 = false;
+        }
+
+        ///////////////
+        // User Left //
+        ///////////////
+        public static boolean flag_UserLeft = false;
+        public static String pickup_UserLeft1 = null;
+        public static void setUserLeftFlag(boolean val, String pickup1){
+            flag_UserLeft = val;
+            pickup_UserLeft1 = pickup1;
+        }
+        private static void onUserLeftFlag(){
+            Utility.awaitingUsers_userLeft(pickup_UserLeft1);
+            flag_UserLeft = false;
+            pickup_UserLeft1 = null;
         }
 
         //////////////////

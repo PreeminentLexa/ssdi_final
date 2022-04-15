@@ -21,6 +21,10 @@ public class Connection {
     private boolean shouldClose = false;
     public Connection(String address){
         String[] data = address.split(":");
+        if(data.length != 2){
+            Utility.Think.setConnectEndedFlag(true, false);
+            return;
+        }
         this.IP = data[0];
         this.port = Integer.parseInt(data[1]);
 //        Platform.runLater(() -> this.connect());
