@@ -18,7 +18,7 @@
             <Font size="17.0" />
          </font>
       </TextField>
-      <Label layoutX="66.0" layoutY="161.60000610351562" text="Time per Round:" textFill="WHITE">
+      <Label layoutX="61.0" layoutY="161.0" text="Time per Round:" textFill="WHITE">
          <font>
             <Font name="Nunito Regular" size="22.0" />
          </font>
