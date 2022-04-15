@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.E_AwaitingUsersController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000aa" height="366.0" layoutX="340.0" layoutY="23.0" stroke="TRANSPARENT" strokeType="INSIDE" width="248.0" />
       <Group layoutX="26.0" layoutY="23.0">
          <children>
             <Rectangle arcWidth="5.0" fill="#2e2e2e" height="38.0" stroke="#6b6b6b00" strokeType="INSIDE" width="300.0" />
@@ -57,29 +57,29 @@
          </children>
       </Group>
       <Button fx:id="prevButton" layoutY="363.0" mnemonicParsing="false" onAction="#prevButtonAction" prefHeight="38.0" prefWidth="81.0" style="-fx-background-color: #313131;" text="&lt; Prev" textFill="WHITE" />
-      <Button fx:id="startButton" layoutX="422.0" layoutY="259.0" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="47.0" prefWidth="127.0" style="-fx-background-color: #61ffd0; -fx-cursor: hand;" text="Start" />
-      <Group layoutX="26.0" layoutY="283.0">
+      <Button fx:id="startButton" layoutX="359.0" layoutY="322.0" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="47.0" prefWidth="209.0" style="-fx-background-color: #61ffd0; -fx-cursor: hand;" text="Start" />
+      <Group layoutX="362.0" layoutY="258.0">
          <children>
-            <Label fx:id="roundTimeLabel" layoutX="164.0" layoutY="-2.0" prefHeight="30.0" prefWidth="30.0">
+            <Label fx:id="roundTimeLabel" layoutX="164.0" layoutY="-2.0" prefHeight="30.0" prefWidth="35.0" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Nunito Regular" size="20.0" />
                </font>
             </Label>
-            <Label text="Time Per Round:">
+            <Label text="Time Per Round:" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Nunito Regular" size="20.0" />
                </font>
             </Label>
          </children>
       </Group>
-      <Group layoutX="26.0" layoutY="244.0">
+      <Group layoutX="362.0" layoutY="219.0">
          <children>
-            <Label text="Rounds:">
+            <Label prefHeight="29.0" prefWidth="150.0" text="Rounds:" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Nunito Regular" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="roundsLabel" layoutX="98.0" prefHeight="30.0" prefWidth="30.0">
+            <Label fx:id="roundsLabel" layoutX="169.0" layoutY="1.0" prefHeight="30.0" prefWidth="29.0" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -88,12 +88,12 @@
       </Group>
       <Group layoutX="355.0" layoutY="62.0">
          <children>
-            <Label fx:id="codeLabel" alignment="TOP_CENTER" layoutX="78.0" layoutY="44.0" text="****" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="codeLabel" alignment="TOP_CENTER" layoutX="85.0" layoutY="51.0" text="****" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="32.0" />
+                  <Font size="23.0" />
                </font>
             </Label>
-            <Label alignment="TOP_CENTER" prefHeight="36.0" prefWidth="209.0" text="CODE:" textFill="WHITE">
+            <Label alignment="TOP_CENTER" prefHeight="36.0" prefWidth="209.0" text="Room Code:" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font>
