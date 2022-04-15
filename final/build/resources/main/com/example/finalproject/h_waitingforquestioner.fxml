@@ -6,21 +6,19 @@
 
 <!--Coded By: Bridget-->
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.H_WaitingForQuestionerController">
    <children>
        <!--Text-->
    
-          <Label fx:id="Starting" layoutX="200.0" layoutY="162.0" text="Starting" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+          <Label fx:id="Starting" layoutX="207.0" layoutY="136.0" text="Starting" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Nunito Regular" size="52.0" />
          </font>
       </Label>
-       <Label fx:id="Starting2" layoutX="175.0" layoutY="217.0" text="" textAlignment="CENTER" wrapText="true">
-<!--        <font>-->
-<!--            <Font size="52.0" />-->
-<!--        </font></Label>-->
-    </Label>
+       <Label fx:id="Starting2" alignment="CENTER" layoutX="125.0" layoutY="218.0" prefHeight="17.0" prefWidth="351.0" text="" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Nunito Regular" size="15.0" />
+         </font></Label>
        <Label fx:id="Waiting" layoutX="213.0" layoutY="327.0" text="Please wait for a question" textFill="WHITE">
          <font>
             <Font name="Nunito Regular" size="15.0" />
