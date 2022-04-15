@@ -63,15 +63,21 @@ public class E_AwaitingUsersController extends UtilControllerBase {
             if(i==0 && user1.getText()==""){
                 user1.setText(user.getUsername());
                 userID1 = user.getUID();
+                i=4;
             }else if(i==1 && user2.getText()==""){
                 user2.setText(user.getUsername());
                 userID2 = user.getUID();
+                i=4;
             }else if(i==2 && user3.getText()==""){
                 user3.setText(user.getUsername());
                 userID3 = user.getUID();
+                i=4;
+
             }else if(i==3 && user4.getText()==""){
                 user4.setText(user.getUsername());
                 userID4 = user.getUID();
+                i=4;
+
             }
         }
 
@@ -110,6 +116,7 @@ public class E_AwaitingUsersController extends UtilControllerBase {
     @FXML
     private void startButtonAction(ActionEvent event) throws IOException{
         Utility.awaitingUsers_startGame();
+
     }
 
 
