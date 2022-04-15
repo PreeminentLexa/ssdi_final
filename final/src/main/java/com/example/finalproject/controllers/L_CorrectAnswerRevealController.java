@@ -1,3 +1,13 @@
+package com.example.finalproject.controllers;
+
+import com.example.finalproject.controllers.K_WaitingForAnswerersController;
+import com.example.finalproject.controllers.UtilControllerBase;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class L_CorrectAnswerRevealController extends UtilControllerBase {
     public Label Question;
 
