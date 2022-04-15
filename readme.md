@@ -5,7 +5,7 @@ Bridget Green - bridget.green@ontariotechu.net
 
 Azan Sikder - azan.sikder1@gmail.com
 
-Dewan Mohammadd Tasinuzzaman - email@example.com
+Dewan Mohammadd Tasinuzzaman - zmn.tasin@gmail.com
 
 Lexa Torrance - lexa.torrance@outlook.com
 
