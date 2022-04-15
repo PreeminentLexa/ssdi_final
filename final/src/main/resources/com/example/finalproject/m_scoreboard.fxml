@@ -34,5 +34,6 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Button fx:id="displayButton" mnemonicParsing="false" onAction="#setScoreBoard" text="Display" GridPane.rowIndex="1" />
    </children>
 </GridPane>
