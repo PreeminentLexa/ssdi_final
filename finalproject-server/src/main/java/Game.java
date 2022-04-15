@@ -360,7 +360,7 @@ public class Game {
         return rounds <= this.round;
     }
     public int answerTime(){
-        return getISetting("answerTime", 30);
+        return getISetting("answertime", 30);
     }
 
     private boolean usableQnA = false;
@@ -596,18 +596,18 @@ public class Game {
         String message = "";
         if(player != host){
             message +=
-                    ClientCallbacks.CODE_PUSH+player.getUsername()+"\r\n"+
-                    ClientCallbacks.CODE_PUSH+player.getImageIndex()+"\r\n"+
+                    ClientCallbacks.CODE_PUSH+host.getUsername()+"\r\n"+
+                    ClientCallbacks.CODE_PUSH+host.getImageIndex()+"\r\n"+
                     ClientCallbacks.CODE_POP+"2"+
-                    ClientCallbacks.CODE_HOSTJOINED+player.getUniqueID()+"\r\n";
+                    ClientCallbacks.CODE_HOSTJOINED+host.getUniqueID()+"\r\n";
         }
         for(int i = 0;i < connectedPlayers-1;i++){
             if(player != players[i]){
                 message +=
-                        ClientCallbacks.CODE_PUSH+player.getUsername()+"\r\n"+
-                        ClientCallbacks.CODE_PUSH+player.getImageIndex()+"\r\n"+
+                        ClientCallbacks.CODE_PUSH+players[i].getUsername()+"\r\n"+
+                        ClientCallbacks.CODE_PUSH+players[i].getImageIndex()+"\r\n"+
                         ClientCallbacks.CODE_POP+"2"+
-                        ClientCallbacks.CODE_USERJOINED+player.getUniqueID()+"\r\n";
+                        ClientCallbacks.CODE_USERJOINED+players[i].getUniqueID()+"\r\n";
             }
         }
         player.sendMessage(message);
