@@ -1,7 +1,7 @@
 # CSCI2020U Quiz Game Group Project
 A 4-player Quiz Game using socket programming in JavaFX with hosting capabilities. Answer multiple-choice questions with 4 possible answers in a round-based quiz game racing against the time against your fellow players in the lobby! Try to achieve the highest score in order to win!
 ## Authors
-Bridget Green - email@example.com
+Bridget Green - bridget.green@ontariotechu.net
 
 Azan Sikder - azan.sikder1@gmail.com
 
