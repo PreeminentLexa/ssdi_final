@@ -26,12 +26,17 @@ public class E_AwaitingUsersController extends UtilControllerBase {
     Label user3;
     @FXML
     Label user4;
+    @FXML
+    Label roundsLabel;
+    @FXML
+    Label roundTimeLabel;
     //Counter to tell how many users joined
 
     String userID1;
     String userID2;
     String userID3;
     String userID4;
+
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
     public void Callback_gameClosed(){}
@@ -41,7 +46,16 @@ public class E_AwaitingUsersController extends UtilControllerBase {
         codeLabel.setText(code);
     } // The game code
 
-    public void Callback_getGameSettings(GameSettings settings){} // The game settings
+
+    //Displays the setting on screen (Retrieved from Server)
+    @FXML
+    public void Callback_getGameSettings(GameSettings settings){
+        roundsLabel.setText(Integer.toString(settings.getiSetting("rounds")));
+        roundTimeLabel.setText(Integer.toString(settings.getiSetting("answertime")));
+
+    }
+
+
     //When a user joins
     @FXML
     public void Callback_userJoined(User user){

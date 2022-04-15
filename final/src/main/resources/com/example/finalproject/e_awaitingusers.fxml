@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -16,22 +15,6 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label alignment="TOP_CENTER" text="CODE:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets right="-100.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <Label fx:id="codeLabel" alignment="TOP_CENTER" layoutX="493.0" layoutY="102.0" text="****" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets right="-100.0" top="60.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Label>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
             <Rectangle arcWidth="5.0" fill="#b8cadb00" height="26.0" layoutX="14.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
@@ -47,5 +30,23 @@
       </Pane>
       <Button fx:id="prevButton" mnemonicParsing="false" onAction="#prevButtonAction" text="&lt; Prev" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
       <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="54.0" prefWidth="127.0" text="Start" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <children>
+            <Label fx:id="roundTimeLabel" layoutX="91.0" layoutY="51.0" prefHeight="0.0" prefWidth="28.0" />
+            <Label fx:id="roundsLabel" layoutX="91.0" layoutY="34.0" prefHeight="5.0" prefWidth="28.0" />
+            <Label fx:id="codeLabel" alignment="TOP_CENTER" layoutX="224.0" layoutY="50.0" text="****">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="216.0" layoutY="14.0" text="CODE:">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="-7.0" layoutY="34.0" text="Rounds:" />
+            <Label layoutX="-7.0" layoutY="51.0" text="Time Per Round" />
+         </children>
+      </Pane>
    </children>
 </GridPane>
