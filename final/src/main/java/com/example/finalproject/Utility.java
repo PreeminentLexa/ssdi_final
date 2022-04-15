@@ -1,6 +1,6 @@
 package com.example.finalproject;
 
-import com.example.finalproject.controllers.UtilControllerBase;
+import com.example.finalproject.controllers.*;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -139,6 +139,7 @@ public class Utility {
     public static void initialize(Stage stage){
         Utility.stage = stage;
         Utility.swapToPage(Utility.initialScreen);
+        Utility.Think.thread = Thread.currentThread();
         Utility.createThinkHook();
     }
 
@@ -150,7 +151,9 @@ public class Utility {
         Think.checkFlags();
     }
     public static class Think {
+        private static boolean isCheckingFlags = false;
         public static void checkFlags(){
+            Think.isCheckingFlags = true;
             if(Think.flag_SchedulePage){onSchedulePageFlag();}
             if(Think.flag_ConnectionClosed){onConnectionClosedFlag();}
             if(Think.flag_GameClosed){onGameClosedFlag();}
@@ -164,19 +167,36 @@ public class Utility {
             if(Think.flag_QuestionerFinished){onQuestionerFinishedFlag();}
             if(Think.flag_PickAnswer){onPickAnswerFlag();}
             if(Think.flag_DoneAnswering){onDoneAnsweringFlag();}
+            Think.isCheckingFlags = false;
+        }
+
+        private static Thread thread = null;
+
+        private static boolean delay(){
+            if(Thread.currentThread().equals(thread)){
+                return true;
+            }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return false;
         }
 
         ///////////////////
         // Schedule Page //
         ///////////////////
-        public static boolean flag_SchedulePage = false;
-        public static String pickup_SchedulePage1 = null;
-        public static StackTraceElement pickup_SchedulePage2 = null;
-        public static Runnable pickup_SchedulePage3 = null;
+        private static boolean flag_SchedulePage = false;
+        private static String pickup_SchedulePage1 = null;
+        private static StackTraceElement pickup_SchedulePage2 = null;
+        private static Runnable pickup_SchedulePage3 = null;
         public static void setSchedulePageFlag(boolean val){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_SchedulePage = val;
         }
         public static void setSchedulePageFlagPickups(String pickup1, StackTraceElement pickup2, Runnable pickup3){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             pickup_SchedulePage1 = pickup1;
             pickup_SchedulePage2 = pickup2;
             pickup_SchedulePage3 = pickup3;
@@ -195,8 +215,9 @@ public class Utility {
         /////////////////////////////////
         // Connection To Server Closed //
         /////////////////////////////////
-        public static boolean flag_ConnectionClosed = false;
+        private static boolean flag_ConnectionClosed = false;
         public static void setConnectionClosedFlag(boolean val){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_ConnectionClosed = val;
         }
         private static void onConnectionClosedFlag(){
@@ -207,8 +228,9 @@ public class Utility {
         /////////////////////////
         // Current Game Closed //
         /////////////////////////
-        public static boolean flag_GameClosed = false;
+        private static boolean flag_GameClosed = false;
         public static void setGameClosedFlag(boolean val){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_GameClosed = val;
         }
         private static void onGameClosedFlag(){
@@ -219,9 +241,10 @@ public class Utility {
         /////////////////
         // Joined Game //
         /////////////////
-        public static boolean flag_JoinedGame = false;
-        public static String[] pickup_JoinedGame1 = null;
+        private static boolean flag_JoinedGame = false;
+        private static String[] pickup_JoinedGame1 = null;
         public static void setJoinedGameFlag(boolean val, String[] pickup1){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             pickup_JoinedGame1 = pickup1;
             flag_JoinedGame = val;
         }
@@ -234,9 +257,10 @@ public class Utility {
         /////////////////
         // Join Failed //
         /////////////////
-        public static boolean flag_JoinFailed = false;
-        public static String pickup_JoinFailed1 = null;
+        private static boolean flag_JoinFailed = false;
+        private static String pickup_JoinFailed1 = null;
         public static void setJoinFailedFlag(boolean val, String pickup1){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_JoinFailed = val;
             pickup_JoinFailed1 = pickup1;
         }
@@ -249,9 +273,10 @@ public class Utility {
         //////////////////
         // Game Started //
         //////////////////
-        public static boolean flag_GameStarted = false;
-        public static String pickup_GameStarted1 = null;
+        private static boolean flag_GameStarted = false;
+        private static String pickup_GameStarted1 = null;
         public static void setGameStartedFlag(boolean val, String pickup1){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_GameStarted = val;
             pickup_GameStarted1 = pickup1;
         }
@@ -264,9 +289,10 @@ public class Utility {
         //////////////////
         // Code Arrived //
         //////////////////
-        public static boolean flag_CodeArrived = false;
-        public static String pickup_CodeArrived1 = null;
+        private static boolean flag_CodeArrived = false;
+        private static String pickup_CodeArrived1 = null;
         public static void setCodeArrivedFlag(boolean val, String pickup1){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_CodeArrived = val;
             pickup_CodeArrived1 = pickup1;
         }
@@ -279,10 +305,11 @@ public class Utility {
         /////////////////////////
         // Questioner Finished //
         /////////////////////////
-        public static boolean flag_QuestionerFinished = false;
-        public static long pickup_QuestionerFinished1 = -1;
-        public static String[] pickup_QuestionerFinished2 = null;
+        private static boolean flag_QuestionerFinished = false;
+        private static long pickup_QuestionerFinished1 = -1;
+        private static String[] pickup_QuestionerFinished2 = null;
         public static void setQuestionerFinishedFlag(boolean val, long pickup1, String[] pickup2){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_QuestionerFinished = val;
             pickup_QuestionerFinished1 = pickup1;
             pickup_QuestionerFinished2 = pickup2;
@@ -297,9 +324,10 @@ public class Utility {
         ////////////////////
         // Done Answering //
         ////////////////////
-        public static boolean flag_PickAnswer = false;
-        public static int pickup_PickAnswer1 = -1;
+        private static boolean flag_PickAnswer = false;
+        private static int pickup_PickAnswer1 = -1;
         public static void setPickAnswerFlag(boolean val, int pickup1){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_PickAnswer = val;
             pickup_PickAnswer1 = pickup1;
         }
@@ -312,10 +340,11 @@ public class Utility {
         ////////////////////
         // Done Answering //
         ////////////////////
-        public static boolean flag_DoneAnswering = false;
-        public static String[] pickup_DoneAnswering1 = null;
-        public static int[] pickup_DoneAnswering2 = null;
+        private static boolean flag_DoneAnswering = false;
+        private static String[] pickup_DoneAnswering1 = null;
+        private static int[] pickup_DoneAnswering2 = null;
         public static void setDoneAnsweringFlag(boolean val, String[] pickup1, int[] pickup2){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_DoneAnswering = val;
             pickup_DoneAnswering1 = pickup1;
             pickup_DoneAnswering2 = pickup2;
@@ -330,28 +359,33 @@ public class Utility {
         //////////////////////////
         // Connect Attempt Done //
         //////////////////////////
-        public static boolean flag_ConnectEnded = false;
-        public static boolean pickup_ConnectEnded1 = false;
-        public static String pickup_ConnectEnded2 = null;
-        public static int pickup_ConnectEnded3 = -1;
+        private static boolean flag_ConnectEnded = false;
+        private static boolean pickup_ConnectEnded1 = false;
+        private static String pickup_ConnectEnded2 = null;
+        private static int pickup_ConnectEnded3 = -1;
+        private static String pickup_ConnectEnded4 = null;
         public static void setConnectEndedFlag(boolean val, boolean pickup1){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_ConnectEnded = val;
             pickup_ConnectEnded1 = pickup1;
         }
-        public static void setConnectEndedFlagPickups(String pickup2, int pickup3){
+        public static void setConnectEndedFlagPickups(String pickup4, String pickup2, int pickup3){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             pickup_ConnectEnded2 = pickup2;
             pickup_ConnectEnded3 = pickup3;
+            pickup_ConnectEnded4 = pickup4;
         }
         private static void onConnectEndedFlag(){
             flag_ConnectEnded = false;
             if(pickup_ConnectEnded1){
                 Utility.joinServer_success(pickup_ConnectEnded2, pickup_ConnectEnded3);
             } else {
-                Utility.joinServer_failed();
+                Utility.joinServer_failed(pickup_ConnectEnded4, pickup_ConnectEnded2, pickup_ConnectEnded3);
             }
             pickup_ConnectEnded1 = false;
             pickup_ConnectEnded2 = null;
             pickup_ConnectEnded3 = -1;
+            pickup_ConnectEnded4 = null;
         }
 
         /////////////////
@@ -369,24 +403,42 @@ public class Utility {
                 this.image = image;
                 this.host = host;
             }
+            public void setNext(UserJoinedQueue n){
+                if(null == this.next){
+                    if(this == n){return;}
+                    this.next = n;
+                }
+                this.next.setNext(n);
+            }
             public static UserJoinedQueue makeThing(UserJoinedQueue parent, String uid, String username, int image, boolean host){
                 UserJoinedQueue thing = new UserJoinedQueue(uid, username, image, host);
                 if(null==parent){
                     return thing;
                 }
-                parent.next = thing;
+                parent.setNext(thing);
                 return parent;
             }
+            public int length(){
+                return length(0);
+            }
+            public int length(int offset){
+                offset++;
+                if(null == next){
+                    return offset;
+                }
+                return this.next.length(offset);
+            }
         }
-        public static boolean flag_UserJoined = false;
-        public static UserJoinedQueue pickup_UserJoined1 = null;
-        public static UserJoinedQueue pickup_UserJoined2 = null;
+        private static boolean flag_UserJoined = false;
+        private static UserJoinedQueue pickup_UserJoined1 = null;
+        private static UserJoinedQueue pickup_UserJoined2 = null;
         public static void setUserJoinedFlag(boolean val, String pickup1, String pickup2, int pickup3, boolean pickup4){
-//            System.out.println("From server: "+pickup2+" "+(pickup4?"T":"F"));
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_UserJoined = val;
             pickup_UserJoined1 = UserJoinedQueue.makeThing(pickup_UserJoined1, pickup1, pickup2, pickup3, pickup4);
         }
         public static void setUserJoinedFlagMe(String pickup1, String pickup2, int pickup3, boolean pickup4){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             pickup_UserJoined2 = new UserJoinedQueue(pickup1, pickup2, pickup3, pickup4);
         }
         private static void onUserJoinedFlag(){
@@ -405,9 +457,10 @@ public class Utility {
         ///////////////
         // User Left //
         ///////////////
-        public static boolean flag_UserLeft = false;
-        public static String pickup_UserLeft1 = null;
+        private static boolean flag_UserLeft = false;
+        private static String pickup_UserLeft1 = null;
         public static void setUserLeftFlag(boolean val, String pickup1){
+            while(Think.isCheckingFlags){if(delay()){break;}}
             flag_UserLeft = val;
             pickup_UserLeft1 = pickup1;
         }
@@ -424,6 +477,9 @@ public class Utility {
             public static boolean flag_xxxx = false;
             public static String pickup_xxxx1 = null;
             public static void setXxxxFlag(boolean val, String pickup1){
+                while(Think.isCheckingFlags){
+                    try {Thread.sleep(100);} catch (InterruptedException e){e.printStackTrace();}
+                }
                 flag_xxxx = val;
                 pickup_xxxx1 = pickup1;
             }
@@ -470,7 +526,7 @@ public class Utility {
      */
     public static void joinServer(String ip, String username, int imageNumber){
         Utility.swapToPage("util-pending.fxml");
-        Utility.Think.setConnectEndedFlagPickups(username, imageNumber);
+        Utility.Think.setConnectEndedFlagPickups(ip, username, imageNumber);
         Utility.server = new Connection(ip);
     }
 
@@ -483,8 +539,9 @@ public class Utility {
 
     /** joinServer_failed - From Utility.joinServer - Failed server connection
      */
-    public static void joinServer_failed(){
+    public static void joinServer_failed(String ip, String username, int imageNumber){
         Utility.swapToPage("a_connectscreen.fxml");
+        Utility.controller.Callback_previousConnectInputs(ip, username, imageNumber);
         Utility.controller.Callback_errorMessage("Failed to connect");
     }
 
@@ -525,11 +582,11 @@ public class Utility {
         Utility.swapToPage("c_mainmenu.fxml");
     }
 
+    private static String[] tempSettings;
     /** createGame_create - From Controller (D) - Tells the server to create a game
      * @param settings A String array, an arbitrary amount of settings, in the form "key|type|value" where the type is "s", "i", "f" for string, integer, float
      * @param password A String, the password of the game, null or "" for an unprotected game
      */
-    private static String[] tempSettings;
     public static void createGame_create(String[] settings, String password){
         Utility.swapToPage("e_awaitingusers.fxml");
         Utility.tempSettings = settings;
@@ -542,12 +599,12 @@ public class Utility {
         Utility.swapToPage("c_mainmenu.fxml");
     }
 
+    private static String tempCode;
+    private static String tempPass;
     /** joinGame_join - From Controller (F) - Asks the server to join a game
      * @param code A String, the code of the game
      * @param password A String, the password of the game, it doesn't matter if the game is unprotected
      */
-    private static String tempCode;
-    private static String tempPass;
     public static void joinGame_join(String code, String password){
         Utility.swapToPage("util-pending.fxml");
         Utility.tempCode = code;
@@ -657,10 +714,10 @@ public class Utility {
         }
     }
 
+    private static String tempQuestion;
     /** inputQuestion_pickQuestion - From Controller (G) - Used to transition to frame J
      * @param question A String, the question
      */
-    private static String tempQuestion;
     public static void inputQuestion_pickQuestion(String question){
         Utility.swapToPage("j_inputanswers.fxml");
         inputAnswer_getQuestion(question);
