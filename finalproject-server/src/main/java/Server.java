@@ -4,7 +4,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    private static int port = 8086;
+    private static int port = 8888;
     public static void main(String[] args) {
         Server server = new Server();
     }
