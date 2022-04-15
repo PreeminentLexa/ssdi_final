@@ -26,18 +26,64 @@ public class E_AwaitingUsersController extends UtilControllerBase {
     Label user3;
     @FXML
     Label user4;
+    //Counter to tell how many users joined
+
+    String userID1;
+    String userID2;
+    String userID3;
+    String userID4;
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
     public void Callback_gameClosed(){}
-
+    //set the code to the code from the server and display it
+    @FXML
     public void Callback_getGameCode(String code){
         codeLabel.setText(code);
     } // The game code
+
     public void Callback_getGameSettings(GameSettings settings){} // The game settings
+    //When a user joins
+    @FXML
     public void Callback_userJoined(User user){
-        user1.setText(user.getUsername());
-    } // When a user joins
-    public void Callback_userLeft(User user){} // When a user leaves
+        for(int i = 0; i < 4; i++){
+            if(i==0 && user1.getText()==""){
+                user1.setText(user.getUsername());
+                userID1 = user.getUID();
+            }else if(i==1 && user2.getText()==""){
+                user2.setText(user.getUsername());
+                userID2 = user.getUID();
+            }else if(i==2 && user3.getText()==""){
+                user3.setText(user.getUsername());
+                userID3 = user.getUID();
+            }else if(i==3 && user4.getText()==""){
+                user4.setText(user.getUsername());
+                userID4 = user.getUID();
+            }
+        }
+
+    } // When a user leaves
+    @FXML
+    public void Callback_userLeft(User user){
+        for(int i = 0; i < 4;i++){
+            if(i==0 && user.getUID() ==userID1){
+                user1.setText("");
+                userID1 = "";
+            }else if(i==1 && user.getUID() ==userID2){
+                user2.setText("");
+                userID2 = "";
+            }else if(i==2 && user.getUID() ==userID3){
+                user3.setText("");
+                userID3 = "";
+
+            }else if(i==3 && user.getUID() ==userID4){
+                user4.setText("");
+                userID4 = "";
+
+            }
+        }
+
+
+    }
 
     //Previous Button in the Bottom Left
     @FXML
