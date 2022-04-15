@@ -57,7 +57,7 @@ public class M_ScoreBoardController extends UtilControllerBase {
 
             }
         }
-        for(int i = 0;i<=n;i++){
+        for(int i = 0;i<n;i++){
             if(i==0){
                 user1.setText(getScoreText(allUsers[i]));
             }else if(i==1){
