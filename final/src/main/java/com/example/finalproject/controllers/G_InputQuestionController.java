@@ -3,6 +3,7 @@ package com.example.finalproject.controllers;
 // The Controller for frame G
 
 import com.example.finalproject.Utility;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,19 +13,22 @@ import java.util.ResourceBundle;
 
 public class G_InputQuestionController extends UtilControllerBase {
 
-    public Button NextButton;
-    public TextField Question;
+    @FXML
+    protected TextField Question;
+    @FXML
+    protected Button NextButton;
 
     public void initialize(URL location, ResourceBundle resources) {} // Don't have to use this
     public void Callback_connectionLost(){}
     public void Callback_gameClosed(){}
 
 
-    public void Callback_getQuestion(String question){
+    public void Callback_getQuestion(String question){ // The question that was previously entered - used to return to this stage from J
+        Question.setText(question);
+    }
 
-    } // The question that was previously entered - used to return to this stage from J
-
-    public void testPickQuestion() {
+    public void submitQuestion() {
+        if(Question.getText().equals("")){return;}
         Utility.inputQuestion_pickQuestion(Question.getText());
     }
 
