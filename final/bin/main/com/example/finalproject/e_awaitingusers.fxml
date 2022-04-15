@@ -38,8 +38,8 @@
       </Group>
       <Group layoutX="26.0" layoutY="105.0">
          <children>
-            <Rectangle arcWidth="5.0" fill="#2e2e2e" height="38.0" layoutY="2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="300.0" />
-            <Label fx:id="user3" layoutX="14.0" layoutY="11.0" prefHeight="17.0" prefWidth="242.0">
+            <Rectangle arcWidth="5.0" fill="#2e2e2e" height="38.0" stroke="TRANSPARENT" strokeType="INSIDE" width="300.0" />
+            <Label fx:id="user3" layoutX="14.0" layoutY="11.0" prefHeight="17.0" prefWidth="242.0" textFill="WHITE">
                <font>
                   <Font name="Nunito Regular" size="13.0" />
                </font>
@@ -48,8 +48,8 @@
       </Group>
       <Group layoutX="26.0" layoutY="146.0">
          <children>
-            <Rectangle arcWidth="5.0" fill="#2e2e2e" height="38.0" layoutY="3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="300.0" />
-            <Label fx:id="user4" layoutX="14.0" layoutY="12.0" prefHeight="17.0" prefWidth="229.0">
+            <Rectangle arcWidth="5.0" fill="#2e2e2e" height="38.0" stroke="TRANSPARENT" strokeType="INSIDE" width="300.0" />
+            <Label fx:id="user4" layoutX="14.0" layoutY="12.0" prefHeight="17.0" prefWidth="229.0" textFill="WHITE">
                <font>
                   <Font name="Nunito Regular" size="13.0" />
                </font>

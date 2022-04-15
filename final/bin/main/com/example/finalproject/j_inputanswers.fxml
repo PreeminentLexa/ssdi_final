@@ -3,8 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Font?>
 <GridPane hgap="5" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" vgap="5" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controllers.J_InputAnswersController">
-    <Label fx:id="Question" text="Question" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="5" GridPane.rowSpan="30" />
+    <Label fx:id="Question" text="..." GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="5" GridPane.rowSpan="30"  textFill="WHITE">
+        <font>
+            <Font name="Nunito Regular" size="22.0" />
+        </font>
+    </Label>
 
 
     <TextField fx:id="t1" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="15" GridPane.rowSpan="20" />
@@ -12,9 +17,14 @@
     <TextField fx:id="t3" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="25" GridPane.rowSpan="20" />
     <TextField fx:id="t4" GridPane.columnIndex="10" GridPane.columnSpan="40" GridPane.rowIndex="30" GridPane.rowSpan="20" />
 
+    <Button onAction="#submit1" prefHeight="20" prefWidth="150" text="Go (1 is correct)" GridPane.columnIndex="50" GridPane.rowIndex="15" GridPane.columnSpan="500" GridPane.rowSpan="20"></Button>
+    <Button onAction="#submit2" prefHeight="20" prefWidth="150" text="Go (2 is correct)" GridPane.columnIndex="50" GridPane.rowIndex="20" GridPane.columnSpan="500" GridPane.rowSpan="20"></Button>
+    <Button onAction="#submit3" prefHeight="20" prefWidth="150" text="Go (3 is correct)" GridPane.columnIndex="50" GridPane.rowIndex="25" GridPane.columnSpan="500" GridPane.rowSpan="20"></Button>
+    <Button onAction="#submit4" prefHeight="20" prefWidth="150" text="Go (4 is correct)" GridPane.columnIndex="50" GridPane.rowIndex="30" GridPane.columnSpan="500" GridPane.rowSpan="20"></Button>
 
-    <Button fx:id="Next" defaultButton="true" onAction="#event" prefHeight="40" prefWidth="100" text="Next" GridPane.columnIndex="35" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1" />
-    <Button fx:id="Prev" defaultButton="true" onAction="#testBack" prefHeight="40" prefWidth="100" text="Back" GridPane.columnIndex="5" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1" />
+
+    <!--    <Button fx:id="Next" defaultButton="true" onAction="#event" prefHeight="40" prefWidth="100" text="Next" GridPane.columnIndex="35" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1" />-->
+    <Button fx:id="Prev" defaultButton="true" onAction="#back" prefHeight="40" prefWidth="100" text="Back" GridPane.columnIndex="5" GridPane.columnSpan="200" GridPane.rowIndex="50" GridPane.rowSpan="1" />
 
 
 
